@@ -11,13 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416094510) do
+ActiveRecord::Schema.define(:version => 20120416094514) do
+
+  create_table "alarmansws", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "gralarmansw_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "alarms", :force => true do |t|
-    t.string   "voiceansw"
-    t.string   "comment"
+    t.string   "description"
     t.string   "creator"
     t.string   "editor"
+    t.boolean  "enable"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20120416094510) do
   create_table "domains_myusers", :force => true do |t|
     t.integer  "myuser_id"
     t.integer  "domain_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gralarmansws", :force => true do |t|
+    t.string   "name"
+    t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
