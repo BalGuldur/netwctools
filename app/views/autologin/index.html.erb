@@ -1,0 +1,15 @@
+It's work
+<%= form_tag do %>
+	<%#= params %>
+	<%= label_tag :username, "Имя пользователя" %>
+	<%= text_field_tag :username, params[:username] %><br />
+	<%= label_tag :password, "Пароль" %>
+	<%= password_field_tag :password, params[:password] %><br />
+	<%= label_tag :macorip, "Мак адрес или IP клиента" %>
+	<%= text_field_tag :macorip, params[:macorip] %><br />
+	<%#= label_tag :ipswitch, "IP адрес свитча" %>
+	<%#= text_field_tag :ipswitch, params[:ipswitch] %><br />
+	<%#= label_tag :portswitch, "Порт на свитче" %>
+	<%#= text_field_tag :portswitch, params[:portswitch] %><br />
+	<%= submit_tag "Авторизоваться" %><br />
+<% end -%>

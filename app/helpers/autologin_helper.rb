@@ -1,0 +1,2 @@
+module AutologinHelper
+end

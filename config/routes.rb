@@ -1,4 +1,7 @@
 Netwctools::Application.routes.draw do
+	resources :autologin, :only => :index
+	post 'autologin' => 'autologin#index'
+
   resources :domains do
 		member do
 			get 'rezervrangevlan'
