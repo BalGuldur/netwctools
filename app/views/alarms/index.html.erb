@@ -1,13 +1,23 @@
 It's work
 <h1>Общая авария</h1>
-<table>
-	<tr>
-		<th>Описание</th>
-		<th>Создатель</th>
-	</tr>
-	<tr>
-		<%# form.form@activealarm %>
-		<td><%= @activealarm.description %></td>
-		<td><%= @activealarm.creator %></td>
-	</tr>
-</table>
+<%= form_for @activealarm, :action => "index", :method => :get do |f| %>
+	<%= label_tag "Описание" %>
+	<%= f.text_field :description %><br />
+	<table>
+		<tr>
+			<% @allgransw.each do |gransw| %>
+				<th><%= gransw.name %></th>
+			<% end -%>
+		</tr>
+		<tr>
+			<% @allgransw.each do |gransw| %>
+				<td><%= f.select "answer%{gransw}" options_from_collection_for_select(gransw.a %></td>
+			<% end -%>
+		</tr>
+	</table>
+	<% if @activealarm.description==nil %>
+		<%= f.submit "Включить" %><br />
+	<% else %>
+		<%= f.submit "Выключить" %><br />
+	<% end -%>
+<% end -%>
