@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416094508) do
+ActiveRecord::Schema.define(:version => 20120416094510) do
+
+  create_table "alarms", :force => true do |t|
+    t.string   "voiceansw"
+    t.string   "comment"
+    t.string   "creator"
+    t.string   "editor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "domains", :force => true do |t|
     t.string   "name"
@@ -52,6 +61,14 @@ ActiveRecord::Schema.define(:version => 20120416094508) do
   create_table "networks", :force => true do |t|
     t.string   "networkaddress"
     t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "optionalarms", :force => true do |t|
+    t.integer  "position"
+    t.string   "filename"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

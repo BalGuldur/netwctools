@@ -19,6 +19,8 @@ Netwctools::Application.routes.draw do
 		member do
 		end
 	end
+
+	resources :alarms
 			
 
   resources :myusers

@@ -7,6 +7,7 @@ gem 'rails', '3.1.3'
 
 gem 'therubyracer'
 gem 'sqlite3'
+gem 'mysql2'
 gem 'netaddr'
 gem 'snmp'
 gem 'devise', '~> 1.4'

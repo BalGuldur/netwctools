@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  voiceansw: MyString
+  comment: MyString
+  creator: MyString
+  editor: MyString
+
+two:
+  voiceansw: MyString
+  comment: MyString
+  creator: MyString
+  editor: MyString
