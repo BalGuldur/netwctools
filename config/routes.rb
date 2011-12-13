@@ -1,4 +1,10 @@
 Netwctools::Application.routes.draw do
+  get "networks" => 'networks#index'
+
+  post "networks" => 'networks#create'
+
+  delete "networks/:id" => 'networks#destroy'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,19 @@
+<h1>Подсети</h1>
+<table>
+  <tr>
+    <th>Подсеть</th>
+  </tr>
+  <% @networks.each do |network| -%>
+  <tr>
+    <td><%= network.networkaddress %></td>
+    <td><%= link_to "Удалить подсеть", "networks/#{network.id}", :method => :delete %></td>
+    <td><%# TODO link_to "Find and create Ip" %></td>
+  </tr>
+  <% end -%>
+</table>
+<%=form_for @network do |netform| %>
+  <%= netform.label(:networkaddress, "Адрес подсети") %>
+  <%= netform.text_field(:networkaddress) %>
+  <%= netform.submit("Завести подсеть") %>
+<% end -%>
+<%# link_to "See table Ip's", ips_path %>
