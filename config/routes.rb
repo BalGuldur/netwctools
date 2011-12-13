@@ -37,6 +37,9 @@ Netwctools::Application.routes.draw do
   #     resource :seller
   #   end
 
+  #resources :swmodels, :only => [:index, :create, :show, :destroy, [:edit, :method => :put]]
+  resources :swmodels, :except => [:new]
+
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments

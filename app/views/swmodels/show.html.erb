@@ -1,0 +1,8 @@
+<h1>Модель</h1>
+<%= form_for @swmodel do |model| %>
+    <div><%= model.label :name, "Наименование модели" %></div>
+    <div><%= model.text_field :name %></div>
+    <div><%= model.label :company, "Компания производитель" %></div>
+    <div><%= model.text_field :company %></div>
+    <div><%= model.submit "Применить" %></div>
+<%- end %>

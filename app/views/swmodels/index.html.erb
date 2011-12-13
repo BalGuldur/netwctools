@@ -1,0 +1,22 @@
+<h1>Модели свитчей</h1>
+<table>
+  <tr>
+    <th>Производитель</th>
+    <th>Наименование</th>
+  </tr>
+  <%- @swmodels.each do |model| %>
+    <tr>
+      <td><%= model.company %></td>
+      <td><%= model.name %></td>
+      <td><%= link_to "Удалить модель", model, :method=>:delete %></td>
+      <td><%= link_to "Редактировать", model, :method=>:get %></td>
+    </tr>
+  <%- end %>
+  <tr>
+    <%= form_for @swmodel do |swmodel| %>
+      <td><%= swmodel.text_field :company %></td>
+      <td><%= swmodel.text_field :name %></td>
+      <td><%= swmodel.submit ("Создать модель") %></td>
+    <%- end %>
+  </tr>
+</table>

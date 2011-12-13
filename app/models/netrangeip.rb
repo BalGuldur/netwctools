@@ -15,13 +15,11 @@ class Netrangeip
     iprange=@network.collect {|octet|
       if octet.include? "-"
         octet=octet.split("-")
-        range=(octet[0].to_i..octet[1].to_i)
-        octet=range
+        (octet[0].to_i..octet[1].to_i)
       else
-        range=Array.new(1,octet.to_i)
-        octet=range
+        Array.new(1,octet.to_i)
       end
     }
-    return iprange
+    iprange
   end
 end
