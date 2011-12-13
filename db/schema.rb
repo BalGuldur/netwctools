@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213041350) do
+ActiveRecord::Schema.define(:version => 20111213111553) do
+
+  create_table "ips", :force => true do |t|
+    t.string   "ipaddress"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ips_switches", :force => true do |t|
+    t.integer  "ip_id"
+    t.integer  "switch_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "networks", :force => true do |t|
     t.string   "networkaddress"
@@ -22,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20111213041350) do
 
   create_table "switches", :force => true do |t|
     t.string   "address"
-    t.integer  "model_id"
+    t.integer  "swmodel_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

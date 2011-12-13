@@ -3,17 +3,20 @@
   <tr>
     <th>Адрес</th>
     <th>Модель</th>
+    <th>IP Адрес</th>
   </tr>
   <% @switches.each do |switch| %>
-      <% if switch.model_id then %>
-          <% model=Swmodel.find(switch.model_id) %>
-      <% end %>
       <tr>
         <td><%= switch.address %></td>
         <td>
-        <% if model then %>
-            <%= model.name %>
-        <% end %>
+          <% if switch.swmodel then %>
+            <%= switch.swmodel.name %>
+          <% end %>
+        </td>
+        <td>
+          <% if switch.ips.size!=0 then %>
+              <%= switch.ips.first.ipaddress %>
+          <% end %>
         </td>
         <td><%= link_to "Удалить коммутатор", switch, :method => :delete %></td>
         <td><%= link_to "Редактировать", switch %></td>

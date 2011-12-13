@@ -3,12 +3,21 @@ class SwitchesController < ApplicationController
   def index
     @switches=Switch.all
     @switch=Switch.new
+    @ip=Ip.new
   end
 
   # POST
   def create
     @switch=Switch.new(params[:switch])
+    if params[:switch][:ip]=="generate" then#|| params[:switch][:ip]==""
+      @ip=Ip.new
+    ## TODO @ip.generateip
+    else
+      @ip=Ip.new(ipaddress: params[:switch][:ip])
+    end
+    @ip.save
     @switch.save
+    @switch.ips<<@ip
     redirect_to :back
   end
 
