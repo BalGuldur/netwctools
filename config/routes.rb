@@ -1,4 +1,7 @@
 Netwctools::Application.routes.draw do
+  resources :swmodels, :except => [:new]
+  resources :switches, :except => :new
+
   get "networks" => 'networks#index'
 
   post "networks" => 'networks#create'
@@ -38,7 +41,6 @@ Netwctools::Application.routes.draw do
   #   end
 
   #resources :swmodels, :only => [:index, :create, :show, :destroy, [:edit, :method => :put]]
-  resources :swmodels, :except => [:new]
 
   # Sample resource route with more complex sub-resources
   #   resources :products do

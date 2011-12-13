@@ -1,0 +1,7 @@
+<%= form_for @switch do |swform| %>
+    <%= swform.label :model_id, "Модель" %>
+    <%= swform.select(:model_id, options_from_collection_for_select(Swmodel.all, :id, :name)) %>
+    <%= swform.label :address, "Адрес" %>
+    <%= swform.text_field :address %>
+    <%= swform.submit "Создать/Редактировать" %>
+<%- end %>
