@@ -1,6 +1,6 @@
 Netwctools::Application.routes.draw do
   resources :swmodels, :except => [:new]
-  resources :switches, :except => :new
+  resources :switches, :except => [:new, :edit]
   resources :ips, :except => :new
 
   get "networks" => 'networks#index'

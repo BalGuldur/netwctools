@@ -2,6 +2,8 @@
     <%= swform.label :swmodel_id, "Модель" %>
     <%= swform.select(:swmodel_id, options_from_collection_for_select(Swmodel.all, :id, :name)) %>
     <%= swform.label "IP адрес" %>
+    <%# Внутри условия идет иницализация value для разделения случаев генерирования формы для нового свитча
+     и редактирования свитча %>
     <% if @switch.ips.size==0 then %>
         <% value="generate" %>
     <% else %>

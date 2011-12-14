@@ -1,4 +1,7 @@
 class Network < ActiveRecord::Base
+  # Класс предоставляющий отображение сетей в базе, и super класс для всех типов сетей
+
+  # TODO Добавить валидацию по формату всех известных типов на networkaddress
 
   def getnotabstractnetwork
     #Метод возвращает объект-неабстрактную сеть (классы описаны в отдельных файлах)
@@ -21,7 +24,7 @@ class Network < ActiveRecord::Base
     # в условии заглушка
     if self.networkaddress =~ /\A*\z/
       String.new("Netrangeip")
-    #  тут дальше должны идти в elsif другие типы
+    # тут дальше должны идти в elsif другие типы
     else
       nil
     end

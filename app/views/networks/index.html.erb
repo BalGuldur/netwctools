@@ -11,6 +11,7 @@
   </tr>
   <% end -%>
 </table>
+<%# TODO refactoring to partial %>
 <%=form_for @network do |netform| %>
   <%= netform.label(:networkaddress, "Адрес подсети") %>
   <%= netform.text_field(:networkaddress) %>
