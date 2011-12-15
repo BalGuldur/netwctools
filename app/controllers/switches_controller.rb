@@ -20,7 +20,8 @@ class SwitchesController < ApplicationController
     # соответственно подходит ветка else
     if params[:switch][:ip]=="generate" then#|| params[:switch][:ip]==""
       @ip=Ip.new
-    ## TODO @ip.generateip
+    # TODO @ip.generateip
+    # для генерации потребуется создать выносы
     else
       #Во всех других случаях будем считать, что пользователь ввел ip
       @ip=Ip.new(ipaddress: params[:switch][:ip])

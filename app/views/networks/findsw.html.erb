@@ -1,0 +1,14 @@
+<h1>Результаты опроса сети</h1>
+<nav><%= button_to "OK", :back, :method => :get %></nav>
+<table>
+  <tr>
+    <th>IP адрес</th>
+    <th>Действие</th>
+  </tr>
+  <%- @ips.each do |ip| %>
+    <tr>
+      <td><%= ip.ipaddress %></td>
+      <td><%= ip.state %></td>
+    </tr>
+  <%- end %>
+</table>

@@ -26,4 +26,12 @@ class NetworksController < ApplicationController
     @network.delete
     redirect_to :back
   end
+
+  #GET
+  def findsw
+    @network=Network.find(params[:id])
+    checknet=Checknet.new
+    @ips=checknet.check_ips_from_network(@network)
+    # TODO norm code
+  end
 end

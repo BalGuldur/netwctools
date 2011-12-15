@@ -4,10 +4,9 @@ Netwctools::Application.routes.draw do
   resources :ips, :except => :new
 
   get "networks" => 'networks#index'
-
   post "networks" => 'networks#create'
-
   delete "networks/:id" => 'networks#destroy'
+  get "networks/:id" => 'networks#findsw'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

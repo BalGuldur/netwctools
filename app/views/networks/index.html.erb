@@ -7,7 +7,7 @@
   <tr>
     <td><%= network.networkaddress %></td>
     <td><%= link_to "Удалить подсеть", "networks/#{network.id}", :method => :delete %></td>
-    <td><%# TODO link_to "Find and create Ip" %></td>
+    <td><%= button_to "Поиск оборудования", {:action => :findsw, :id => network.id}, :method => :get %></td>
   </tr>
   <% end -%>
 </table>

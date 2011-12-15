@@ -39,4 +39,22 @@ class Network < ActiveRecord::Base
     #метод возвращающий в виде [integer/range,integer/range,integer/range,integer/range]
     self.getnotabstractnetwork.getnetas_arr_of_arr
   end
+
+  def getnetas_arr_of_ip_obj
+    rangeip=self.getnetas_arr_of_arr
+    ips=Array.new
+    rangeip[0].each {|octet1|
+      rangeip[1].each {|octet2|
+        rangeip[2].each {|octet3|
+          rangeip[3].each {|octet4|
+            ip=Ip.new
+            ip.ipaddress=octet1.to_s+"."+octet2.to_s+"."+octet3.to_s+"."+octet4.to_s
+            ips.push(ip)
+          }
+        }
+      }
+    }
+    ips
+  end
+
 end
