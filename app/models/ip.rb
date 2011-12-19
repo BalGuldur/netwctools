@@ -31,4 +31,8 @@ class Ip < ActiveRecord::Base
     end
   end
 
+  def checkobjid
+  #  тут с гемом snmp должен идти опрос типа оборудования и возвращаться ас стринг
+  end
+
 end

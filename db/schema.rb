@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213111553) do
+ActiveRecord::Schema.define(:version => 20111219040618) do
 
   create_table "ips", :force => true do |t|
     t.string   "ipaddress"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20111213111553) do
     t.string   "company"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "objid"
   end
 
 end
