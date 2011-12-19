@@ -5,8 +5,10 @@ Netwctools::Application.routes.draw do
 
   get "networks" => 'networks#index'
   post "networks" => 'networks#create'
+  get "networks/findipfromallnet" => 'networks#findallnetsw'
   delete "networks/:id" => 'networks#destroy'
   get "networks/:id" => 'networks#findsw'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

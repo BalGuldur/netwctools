@@ -44,4 +44,12 @@ class Checknet
     # TODOlater genering exception
     end
   end
+
+  def checkip_from_allnetwork
+    results=Hash.new
+    Network.all.each do |network|
+      results[network.networkaddress]=self.check_ips_from_network(network)
+    end
+    results
+  end
 end

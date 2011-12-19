@@ -34,4 +34,11 @@ class NetworksController < ApplicationController
     @ips=checknet.check_ips_from_network(@network)
     # TODO norm code
   end
+
+  #GET
+  def findallnetsw
+    checknet=Checknet.new
+    @results=checknet.checkip_from_allnetwork
+    #TODO объединить findallnetws и findsw в один метод, с разными входными параметрами
+  end
 end

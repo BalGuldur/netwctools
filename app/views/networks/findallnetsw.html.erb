@@ -1,0 +1,17 @@
+<h1>Результаты</h1>
+<nav><%= link_to "Назад", :back %></nav>
+<%- @results.each do |networkaddress, res| %>
+    <h2><%= networkaddress %></h2>
+    <table>
+        <tr>
+            <th>IP адрес</th>
+            <th>Действие</th>
+        </tr>
+        <%- res.each do |ip| %>
+            <tr>
+                <td><%= ip.ipaddress %></td>
+                <td><%= ip.state %></td>
+            </tr>
+        <%- end %>
+    </table>
+<%- end %>
