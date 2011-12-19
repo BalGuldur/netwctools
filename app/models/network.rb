@@ -1,7 +1,13 @@
 class Network < ActiveRecord::Base
   # Класс предоставляющий отображение сетей в базе, и super класс для всех типов сетей
-
+  REGOCTET="((1?\\d?\\d)|(2[1-4]\\d)|(25[1-5]))"
+  REGIP="\\A(#{REGOCTET}\\.){3}#{REGOCTET}\\Z"
+  REGOCTETRANGE="((#{REGOCTET})(-#{REGOCTET})?)"
+  REGRANGE="\\A(#{REGOCTETRANGE}\\.){3}#{REGOCTETRANGE}\\Z"
+  REGCIDR="\\A(#{REGOCTET}\\.){3}#{REGOCTET}\\/(([1-2]?\\d)|(3[012]))\\Z"
   # TODO Добавить валидацию по формату всех известных типов на networkaddress
+
+  validates :networkaddress, :format => {:with => /#{REGRANGE}|#{REGCIDR}/}
 
   def getnotabstractnetwork
     #Метод возвращает объект-неабстрактную сеть (классы описаны в отдельных файлах)
@@ -22,9 +28,12 @@ class Network < ActiveRecord::Base
     #TODO записать нормальные regexp
 
     # в условии заглушка
-    if self.networkaddress =~ /\A*\z/
+
+    if self.networkaddress =~ /#{REGRANGE}/
       String.new("Netrangeip")
     # тут дальше должны идти в elsif другие типы
+    elsif self.networkaddress=~ /#{REGCIDR}/
+      String.new("Netclassless")
     else
       nil
     end
@@ -35,26 +44,8 @@ class Network < ActiveRecord::Base
     self.type=self.checktype
   end
 
-  def getnetas_arr_of_arr
-    #метод возвращающий в виде [integer/range,integer/range,integer/range,integer/range]
-    self.getnotabstractnetwork.getnetas_arr_of_arr
-  end
-
   def getnetas_arr_of_ip_obj
-    rangeip=self.getnetas_arr_of_arr
-    ips=Array.new
-    rangeip[0].each {|octet1|
-      rangeip[1].each {|octet2|
-        rangeip[2].each {|octet3|
-          rangeip[3].each {|octet4|
-            ip=Ip.new
-            ip.ipaddress=octet1.to_s+"."+octet2.to_s+"."+octet3.to_s+"."+octet4.to_s
-            ips.push(ip)
-          }
-        }
-      }
-    }
-    ips
+    self.getnotabstractnetwork.getnetas_arr_of_ip_obj
   end
 
 end
