@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Vlannumber:</b>
+  <%= @vlan.vlannumber %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @vlan.address %>
+</p>
+
+<p>
+  <b>Bridgedomain:</b>
+  <%= @vlan.bridgedomain %>
+</p>
+
+<p>
+  <b>Gateway:</b>
+  <%= @vlan.gateway %>
+</p>
+
+<p>
+  <b>Vinos:</b>
+  <%= @vlan.vinos_id %>
+</p>
+
+<p>
+  <b>Nearusel:</b>
+  <%= @vlan.nearusel %>
+</p>
+
+<p>
+  <b>Creator:</b>
+  <%= @vlan.creator %>
+</p>
+
+
+<%= link_to 'Edit', edit_vlan_path(@vlan) %> |
+<%= link_to 'Back', vlans_path %>

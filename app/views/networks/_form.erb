@@ -1,0 +1,5 @@
+<%=form_for @network do |netform| %>
+  <div><%= netform.label(:networkaddress, "Адрес подсети") %></div>
+  <div class="field"><%= netform.text_field(:networkaddress) %></div>
+  <div><%= netform.submit("Завести подсеть") %></div>
+<% end -%>

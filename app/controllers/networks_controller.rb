@@ -16,7 +16,7 @@ class NetworksController < ApplicationController
     if @network.save
       redirect_to :back
     else
-      redirect_to "/500.html"
+      render :action => "index"
     end
   end
 

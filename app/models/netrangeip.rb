@@ -13,9 +13,6 @@ class Netrangeip
 
 
   def getnetas_arr_of_arr
-    @network.range(0,nil)
-
-
     # разделяем network на октеты ориентируясь на точки
     @network=self.network.split(".")
     # преобразуем из @network в виде [string, string, string, string] в

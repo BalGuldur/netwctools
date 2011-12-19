@@ -1,0 +1,29 @@
+<%= form_for(@outin) do |f| %>
+  <% if @outin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@outin.errors.count, "error") %> prohibited this outin from being saved:</h2>
+
+      <ul>
+      <% @outin.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nameis %><br />
+    <%= f.text_field :nameis %>
+  </div>
+  <div class="field">
+    <%= f.label :oborudovanie %><br />
+    <%= f.text_field :oborudovanie %>
+  </div>
+  <div class="field">
+    <%= f.label :bridgedomain %><br />
+    <%= f.text_field :bridgedomain %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

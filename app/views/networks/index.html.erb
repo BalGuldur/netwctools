@@ -1,3 +1,4 @@
+<% @networks=Network.all %>
 <h1>Подсети</h1>
 <nav><%= button_to "Поиск оборудования во всех сетях", {:controller => "networks", :action => "findallnetsw"}, :method => :get %></nav>
 <table>
@@ -7,15 +8,11 @@
   <% @networks.each do |network| -%>
   <tr>
     <td><%= network.networkaddress %></td>
-    <td><%= link_to "Удалить подсеть", "networks/#{network.id}", :method => :delete %></td>
+    <td><%= button_to "Удалить подсеть", "networks/#{network.id}", :method => :delete %></td>
     <td><%= button_to "Поиск оборудования", {:action => :findsw, :id => network.id}, :method => :get %></td>
   </tr>
   <% end -%>
 </table>
+<%= render :partial => "form" %>
 <%# TODO refactoring to partial %>
-<%=form_for @network do |netform| %>
-  <%= netform.label(:networkaddress, "Адрес подсети") %>
-  <%= netform.text_field(:networkaddress) %>
-  <%= netform.submit("Завести подсеть") %>
-<% end -%>
 <%# link_to "See table Ip's", ips_path %>

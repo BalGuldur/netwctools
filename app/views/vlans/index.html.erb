@@ -1,0 +1,35 @@
+<h1>Listing vlans</h1>
+
+<table>
+  <tr>
+    <th>Vlannumber</th>
+    <th>Address</th>
+    <th>Bridgedomain</th>
+    <th>Gateway</th>
+    <th>Vinos</th>
+    <th>Nearusel</th>
+    <th>Creator</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vlans.each do |vlan| %>
+  <tr>
+    <td><%= vlan.vlannumber %></td>
+    <td><%= vlan.address %></td>
+    <td><%= vlan.bridgedomain %></td>
+    <td><%= vlan.gateway %></td>
+    <td><%= vlan.vinos_id %></td>
+    <td><%= vlan.nearusel %></td>
+    <td><%= vlan.creator %></td>
+    <td><%= link_to 'Show', vlan %></td>
+    <td><%= link_to 'Edit', edit_vlan_path(vlan) %></td>
+    <td><%= link_to 'Destroy', vlan, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vlan', new_vlan_path %>

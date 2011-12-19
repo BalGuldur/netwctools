@@ -1,0 +1,45 @@
+<%= form_for(@vlan) do |f| %>
+  <% if @vlan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vlan.errors.count, "error") %> prohibited this vlan from being saved:</h2>
+
+      <ul>
+      <% @vlan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vlannumber %><br />
+    <%= f.number_field :vlannumber %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :bridgedomain %><br />
+    <%= f.number_field :bridgedomain %>
+  </div>
+  <div class="field">
+    <%= f.label :gateway %><br />
+    <%= f.text_field :gateway %>
+  </div>
+  <div class="field">
+    <%= f.label :vinos_id %><br />
+    <%= f.number_field :vinos_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nearusel %><br />
+    <%= f.text_field :nearusel %>
+  </div>
+  <div class="field">
+    <%= f.label :creator %><br />
+    <%= f.text_field :creator %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
