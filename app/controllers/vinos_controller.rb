@@ -45,6 +45,8 @@ class VinosController < ApplicationController
 
     respond_to do |format|
       if @vino.save
+				@terminatepoint=TerminatePoint.find(params[:vino][:terminate_point_id])
+				@terminatepoint.vinos << @vino
         format.html { redirect_to @vino, notice: 'Vino was successfully created.' }
         format.json { render json: @vino, status: :created, location: @vino }
       else

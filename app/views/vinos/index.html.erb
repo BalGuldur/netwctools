@@ -14,7 +14,7 @@
   <tr>
     <td><%= vino.vinosname %></td>
     <td><%= vino.descr %></td>
-    <td><%= vino.terminate_point_id %></td>
+    <td><%= vino.terminate_point.routerip %></td>
     <td><%= link_to 'Show', vino %></td>
     <td><%= link_to 'Edit', edit_vino_path(vino) %></td>
     <td><%= link_to 'Destroy', vino, confirm: 'Are you sure?', method: :delete %></td>
