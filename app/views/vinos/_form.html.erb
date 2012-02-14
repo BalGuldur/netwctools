@@ -21,7 +21,8 @@
   </div>
   <div class="field">
     <%= f.label :terminate_point_id %><br />
-    <%= f.number_field :terminate_point_id %>
+		<%= f.select :terminate_point_id, options_from_collection_for_select(@terminate_points,'id','routerip') %>
+    <%# f.number_field :terminate_point_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -25,6 +25,7 @@ class VinosController < ApplicationController
   # GET /vinos/new.json
   def new
     @vino = Vino.new
+		@terminate_points=TerminatePoint.all
 
     respond_to do |format|
       format.html # new.html.erb
