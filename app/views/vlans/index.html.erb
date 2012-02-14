@@ -1,9 +1,9 @@
 <h1>Таблица вланов</h1>
 <nav>
-	<%# button_to terminatepoints %>
-	<%# button_to vinos %>
-	<%# button_to autocreate %>
-	<%# button_to manualcreate %>
+  <%= link_to "Точки терминирования", terminate_points_path, :method => :get %>
+	<%= link_to "Выносы", vinos_path, :method => :get %>
+	<%= link_to "Автоматически выдать влан", vlans_autocreate_path, :method => :get %>
+	<%= link_to "Выдать влан вручную", vlans_manualcreate_path, :method => :get %>
 </nav>
 <table>
 	<tr>
@@ -23,7 +23,10 @@
 			<td>vlan.descr</td>
 			<td>vlan.vinos_id</td>
 			<td>tut term point budet</td>
-			<td><%# button_to destroy %></td>
+			<td>
+				<%= button_to "Удалить влан", vlan, :method => :delete %>
+				<%= button_to "Редактировать влан", vlan, :method => :get %>
+			</td>
 		</tr>
 	<% end -%>
 </table>

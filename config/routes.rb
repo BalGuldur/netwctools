@@ -2,8 +2,8 @@ Netwctools::Application.routes.draw do
   get "vlans" => 'vlans#index'
   get "vlans/autocreate"
   get "vlans/manualcreate"
-  get "vlans/destroy"
-  get "vlans/edit"
+  delete "vlans/:id" => 'vlans#destroy'
+  get "vlans/:id" => 'vlans#edit'
 
   resources :vinos
 
