@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111219040618) do
+ActiveRecord::Schema.define(:version => 20120214123708) do
 
   create_table "ips", :force => true do |t|
     t.string   "ipaddress"
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(:version => 20111219040618) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "objid"
+  end
+
+  create_table "terminate_points", :force => true do |t|
+    t.string   "routerip"
+    t.string   "routermac"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

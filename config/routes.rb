@@ -1,4 +1,6 @@
 Netwctools::Application.routes.draw do
+  resources :terminate_points
+
   resources :outins
 
   resources :vlans
