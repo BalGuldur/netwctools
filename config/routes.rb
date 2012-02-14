@@ -1,4 +1,14 @@
 Netwctools::Application.routes.draw do
+  get "vlans/index"
+
+  get "vlans/autocreate"
+
+  get "vlans/manualcreate"
+
+  get "vlans/destroy"
+
+  get "vlans/edit"
+
   resources :vinos
 
   resources :terminate_points
