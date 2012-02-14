@@ -1,0 +1,27 @@
+<h1>Listing vinos</h1>
+
+<table>
+  <tr>
+    <th>Vinosname</th>
+    <th>Descr</th>
+    <th>Terminate point</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vinos.each do |vino| %>
+  <tr>
+    <td><%= vino.vinosname %></td>
+    <td><%= vino.descr %></td>
+    <td><%= vino.terminate_point_id %></td>
+    <td><%= link_to 'Show', vino %></td>
+    <td><%= link_to 'Edit', edit_vino_path(vino) %></td>
+    <td><%= link_to 'Destroy', vino, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vino', new_vino_path %>

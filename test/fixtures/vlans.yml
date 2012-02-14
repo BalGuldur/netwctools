@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vlanpvid: 1
+  used: false
+  vinos_id: 1
+  address: MyString
+  descr: MyString
+
+two:
+  vlanpvid: 1
+  used: false
+  vinos_id: 1
+  address: MyString
+  descr: MyString

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Routerip:</b>
+  <%= @terminate_point.routerip %>
+</p>
+
+<p>
+  <b>Routermac:</b>
+  <%= @terminate_point.routermac %>
+</p>
+
+
+<%= link_to 'Edit', edit_terminate_point_path(@terminate_point) %> |
+<%= link_to 'Back', terminate_points_path %>

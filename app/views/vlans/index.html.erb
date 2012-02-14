@@ -1,0 +1,30 @@
+<h1>Таблица вланов</h1>
+<nav>
+	<%# button_to terminatepoints %>
+	<%# button_to vinos %>
+	<%# button_to autocreate %>
+	<%# button_to manualcreate %>
+</nav>
+<table>
+	<tr>
+		<th>Влан PVID</th>
+		<th>Используется</th>
+		<th>Адреса на которых используется</th>
+		<th>Примечание</th>
+		<th>Вынос</th>
+		<th>Терминируется на</th>
+		<%# Еще добавить ответственного, когда создан %>
+	</tr>
+	<% @vlans.each do |vlan| -%>
+		<tr>
+			<td>vlan.vlanpvid</td>
+			<td>vlan.used</td>
+			<td>vlan.address</td>
+			<td>vlan.descr</td>
+			<td>vlan.vinos_id</td>
+			<td>tut term point budet</td>
+			<td><%# button_to destroy %></td>
+		</tr>
+	<% end -%>
+</table>
+

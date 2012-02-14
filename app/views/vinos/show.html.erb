@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Vinosname:</b>
+  <%= @vino.vinosname %>
+</p>
+
+<p>
+  <b>Descr:</b>
+  <%= @vino.descr %>
+</p>
+
+<p>
+  <b>Terminate point:</b>
+  <%= @vino.terminate_point_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_vino_path(@vino) %> |
+<%= link_to 'Back', vinos_path %>

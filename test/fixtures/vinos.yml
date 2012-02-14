@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vinosname: MyString
+  descr: MyString
+  terminate_point_id: 1
+
+two:
+  vinosname: MyString
+  descr: MyString
+  terminate_point_id: 1
