@@ -13,10 +13,6 @@ Netwctools::Application.routes.draw do
 
   resources :terminate_points
 
-  resources :outins
-
-  resources :vlans
-
   resources :swmodels, :except => [:new]
   resources :switches, :except => [:new, :edit]
   resources :ips, :except => :new
