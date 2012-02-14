@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120214124253) do
+ActiveRecord::Schema.define(:version => 20120214124631) do
 
   create_table "ips", :force => true do |t|
     t.string   "ipaddress"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(:version => 20120214124253) do
     t.string   "vinosname"
     t.string   "descr"
     t.integer  "terminate_point_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vlans", :force => true do |t|
+    t.integer  "vlanpvid"
+    t.boolean  "used"
+    t.integer  "vinos_id"
+    t.string   "address"
+    t.string   "descr"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
