@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215090108) do
+ActiveRecord::Schema.define(:version => 20120215101148) do
 
   create_table "ips", :force => true do |t|
     t.string   "ipaddress"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20120215090108) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "bridgedomain_id"
+    t.boolean  "canbebd"
   end
 
 end
