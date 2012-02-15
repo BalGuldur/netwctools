@@ -3,6 +3,10 @@ class VlansController < ApplicationController
 		@vlans=Vlan.all
   end
 
+	def rangecreate
+		
+	end
+
   def autocreate
   end
 

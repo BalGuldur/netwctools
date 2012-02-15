@@ -1,9 +1,11 @@
 <h1>Таблица вланов</h1>
 <nav>
+	<%= link_to "Вланы", vlans_rangecreate_path, :method => :get %>
   <%= link_to "Точки терминирования", terminate_points_path, :method => :get %>
 	<%= link_to "Выносы", vinos_path, :method => :get %>
 	<%= link_to "Автоматически выдать влан", vlans_autocreate_path, :method => :get %>
 	<%= link_to "Выдать влан вручную", vlans_manualcreate_path, :method => :get %>
+	<%= link_to "Зарезервировать диапозон вланов", vlans_rangecreate_path %>
 </nav>
 <table>
 	<tr>
@@ -23,9 +25,9 @@
 			<td><%= vlan.used %></td>
 			<td><%= vlan.address %></td>
 			<td><%= vlan.descr %></td>
-			<td><%= vlan.vinos_id %></td>
-			<td>tut term point budet</td>
-			<td>tut budet canbebd</td>
+			<td><%= vlan.vinos.vinosname %></td>
+			<td><%= vlan.vino.terminate_point.routerip %></td>
+			<td><%= vlan.canbebd %></td>
 			<td><%= vlan.bridgedomain.vlanpvid if vlan.bridgedomain %></td>
 			<td>
 				<%= button_to "Удалить влан", vlan, :method => :delete %>
