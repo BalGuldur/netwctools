@@ -13,16 +13,20 @@
 		<th>Примечание</th>
 		<th>Вынос</th>
 		<th>Терминируется на</th>
+		<th>Может быть BD</th>
+		<th>Bridge Domain</th>
 		<%# Еще добавить ответственного, когда создан %>
 	</tr>
 	<% @vlans.each do |vlan| -%>
 		<tr>
-			<td>vlan.vlanpvid</td>
-			<td>vlan.used</td>
-			<td>vlan.address</td>
-			<td>vlan.descr</td>
-			<td>vlan.vinos_id</td>
+			<td><%= vlan.vlanpvid %></td>
+			<td><%= vlan.used %></td>
+			<td><%= vlan.address %></td>
+			<td><%= vlan.descr %></td>
+			<td><%= vlan.vinos_id %></td>
 			<td>tut term point budet</td>
+			<td>tut budet canbebd</td>
+			<td><%= vlan.bridgedomain.vlanpvid if vlan.bridgedomain %></td>
 			<td>
 				<%= button_to "Удалить влан", vlan, :method => :delete %>
 				<%= button_to "Редактировать влан", vlan, :method => :get %>
