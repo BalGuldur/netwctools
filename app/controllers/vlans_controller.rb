@@ -28,6 +28,9 @@ class VlansController < ApplicationController
   end
 
   def destroy
+		@vlan=Vlan.find(params[:id])
+		@vlan.destroy
+		redirect_to :back
   end
 
   def edit

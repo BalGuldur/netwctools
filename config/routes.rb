@@ -4,8 +4,8 @@ Netwctools::Application.routes.draw do
   get "vlans/manualcreate"
 	get "vlans/rangecreate"
 	post "vlans/genfromrange"
-  delete "vlans/:id" => 'vlans#destroy'
-  get "vlans/:id" => 'vlans#edit'
+  delete "vlan/:id" => 'vlans#destroy'
+  get "vlan/:id" => 'vlans#edit'
 
   resources :vinos
 

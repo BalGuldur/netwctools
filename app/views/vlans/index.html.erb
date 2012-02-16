@@ -30,8 +30,8 @@
 			<td><%= vlan.canbebd %></td>
 			<td><%= vlan.bridgedomain.vlanpvid if vlan.bridgedomain %></td>
 			<td>
-				<%= button_to "Удалить влан", "vlan/#{vlan.id}", :method => :delete %>
-				<%= button_to "Редактировать влан", "vlan/#{vlan.id}", :method => :get %>
+				<%= link_to "Удалить влан", "vlan/#{vlan.id}", :method => :delete %>
+				<%= link_to "Редактировать влан", "vlan/#{vlan.id}", :method => :get %>
 			</td>
 		</tr>
 	<% end -%>

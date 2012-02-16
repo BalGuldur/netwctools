@@ -5,11 +5,14 @@ class Rangevlan
 	attr_accessor :range, :vino_id
 
 	def isrange?
-		return true
+		# regexp описывает типа х, или х-х, где х от 0 до 3999
+		return /\A(\d{1,3}|[123]\d{1,3})(\-(\d{1,3}|[123]\d{1,3}))?\z/.match self.range
 	end
 
 	def notexistvlans?
-		return true
+		simplyvlans=Vino.find(@vino_id).terminate_point.vlans
+		simplyvlansid=simplyvlans.collect{|vlan|vlan.vlanpvid}
+		(self.getrangeasrange.to_a & simplyvlansid).size==0
 	end
 	
 	def createvlansindb
