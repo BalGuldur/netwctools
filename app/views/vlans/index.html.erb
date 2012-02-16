@@ -25,13 +25,13 @@
 			<td><%= vlan.used %></td>
 			<td><%= vlan.address %></td>
 			<td><%= vlan.descr %></td>
-			<td><%= vlan.vinos.vinosname %></td>
-			<td><%= vlan.vino.terminate_point.routerip %></td>
+			<td><%# vlan.vino.vinosname %></td>
+			<td><%# vlan.vino.terminate_point.routerip %></td>
 			<td><%= vlan.canbebd %></td>
 			<td><%= vlan.bridgedomain.vlanpvid if vlan.bridgedomain %></td>
 			<td>
-				<%= button_to "Удалить влан", vlan, :method => :delete %>
-				<%= button_to "Редактировать влан", vlan, :method => :get %>
+				<%= button_to "Удалить влан", "vlan/#{vlan.id}", :method => :delete %>
+				<%= button_to "Редактировать влан", "vlan/#{vlan.id}", :method => :get %>
 			</td>
 		</tr>
 	<% end -%>

@@ -1,3 +1,8 @@
 <h1>Зарезервировать диапозон вланов</h1>
-<%= form_tag '/genfromrange', :method => :post do %>
+<%= form_tag 'genfromrange', :method => :post do %>
 	<%= label_tag :range, "Диапозон вланов" %>
+	<%= text_field_tag :range %><br />
+	<%= label_tag :vino_id, "Вынос" %>
+	<%= select_tag :vino_id, options_from_collection_for_select(@vinos, :id, :vinosname) %><br />
+	<%= submit_tag "Сгенерировать вланы" %><br />
+<% end -%>

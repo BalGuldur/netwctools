@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215101148) do
+ActiveRecord::Schema.define(:version => 20120216090852) do
 
   create_table "ips", :force => true do |t|
     t.string   "ipaddress"
@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(:version => 20120215101148) do
   create_table "vlans", :force => true do |t|
     t.integer  "vlanpvid"
     t.boolean  "used"
-    t.integer  "vinos_id"
     t.string   "address"
     t.string   "descr"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "bridgedomain_id"
     t.boolean  "canbebd"
+    t.integer  "vino_id"
   end
 
 end
