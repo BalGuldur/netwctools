@@ -14,7 +14,7 @@ class Rangevlan
 	
 	def createvlansindb
 		self.getrangeasrange.each do |vlanpv|
-			vlan=Vlan.new(:vlanpvid => vlanpv, :vinos_id => self.vino_id)
+			vlan=Vlan.new(:vlanpvid => vlanpv, :vino_id => self.vino_id)
 			vlan.save
 		end
 	end
