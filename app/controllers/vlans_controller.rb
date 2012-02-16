@@ -4,7 +4,11 @@ class VlansController < ApplicationController
   end
 
 	def rangecreate
-		
+		@range=RangeVlan.new
+		@vlans=Vlan.all
+	end
+
+	def genfromrange
 	end
 
   def autocreate

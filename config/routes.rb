@@ -3,6 +3,7 @@ Netwctools::Application.routes.draw do
   get "vlans/autocreate"
   get "vlans/manualcreate"
 	get "vlans/rangecreate"
+	post "vlans/genfromrange"
   delete "vlans/:id" => 'vlans#destroy'
   get "vlans/:id" => 'vlans#edit'
 
