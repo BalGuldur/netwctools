@@ -4,6 +4,10 @@ Netwctools::Application.routes.draw do
   get "vlans/manualcreate"
 	get "vlans/rangecreate"
 	post "vlans/genfromrange"
+	get "vlanbdon/:id" => 'vlans#vlanbdon'
+	get "vlanbdoff/:id" => 'vlans#vlanbdoff'
+	get "changebd/:id" => 'vlans#changebd'
+	post "changebdn" => 'vlans#changebdn'
   delete "vlan/:id" => 'vlans#destroy'
   get "vlan/:id" => 'vlans#edit'
 

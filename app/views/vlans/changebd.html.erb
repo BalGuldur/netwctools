@@ -1,0 +1,7 @@
+<h1>Выберите bridge-domain</h1>
+<%= form_tag "/changebdn", :method => :post do %>
+	<%= hidden_field_tag :id, @vlan.id %>
+	<%= label_tag :bd_id, "Бридж домайн" %>
+	<%= select_tag :bd_id, options_from_collection_for_select(@bds, :id, :vlanpvid) %><br />
+	<%= submit_tag "Сменить Бридж Домайн" %>
+<% end -%>

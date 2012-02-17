@@ -36,4 +36,29 @@ class VlansController < ApplicationController
   def edit
   end
 
+	def vlanbdon
+		@vlan=Vlan.find(params[:id])
+		@vlan.canbebd=true
+		@vlan.save
+		redirect_to :back
+	end
+
+	def vlanbdoff
+		@vlan=Vlan.find(params[:id])
+		@vlan.canbebd=false
+		@vlan.save
+		redirect_to :back
+	end
+
+	def changebd
+		@vlan=Vlan.find(params[:id])
+		@bds=Vlan.find_all_by_canbebd(true)
+	end
+
+	def changebdn
+		@vlan=Vlan.find(params[:id])
+		@vlan.bridgedomain_id=params[:bd_id]
+		@vlan.save
+		redirect_to vlans_path
+	end
 end
