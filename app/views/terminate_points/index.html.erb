@@ -1,10 +1,10 @@
-<h1>Listing terminate_points</h1>
+<h1>Точки терминирования</h1>
 
 <table>
   <tr>
-    <th>Routerip</th>
-    <th>Routermac</th>
-    <th></th>
+    <th>IP адрес роутера</th>
+    <th>mac адрес роутера</th>
+    <th>Примечание</th>
     <th></th>
     <th></th>
   </tr>
@@ -13,13 +13,13 @@
   <tr>
     <td><%= terminate_point.routerip %></td>
     <td><%= terminate_point.routermac %></td>
-    <td><%= link_to 'Show', terminate_point %></td>
-    <td><%= link_to 'Edit', edit_terminate_point_path(terminate_point) %></td>
-    <td><%= link_to 'Destroy', terminate_point, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= terminate_point.descr %></td>
+    <td><%= link_to 'Редактировать', edit_terminate_point_path(terminate_point) %></td>
+    <td><%= link_to 'Удалить', terminate_point, confirm: 'Вы уверены?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Terminate point', new_terminate_point_path %>
+<%= link_to 'Добавить новую точку терминирования', new_terminate_point_path %>

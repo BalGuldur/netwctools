@@ -1,5 +1,6 @@
 Netwctools::Application.routes.draw do
   get "vlans" => 'vlans#index'
+  get "allvlans" => 'vlans#allvlans'
   get "vlans/autocreate"
   post "vlans/autocreate2"
   get "vlans/manualcreate"
@@ -14,7 +15,7 @@ Netwctools::Application.routes.draw do
 
   resources :vinos
 
-  resources :terminate_points
+  resources :terminate_points, :except => [:show]
 
   resources :swmodels, :except => [:new]
   resources :switches, :except => [:new, :edit]

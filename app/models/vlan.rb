@@ -5,7 +5,4 @@ class Vlan < ActiveRecord::Base
 	belongs_to :vino
 	has_one :terminatepoints, :through => :vino 
 
-  def findnextfree(vino, bd)
-    return 100
-  end
 end

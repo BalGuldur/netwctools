@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216090852) do
+ActiveRecord::Schema.define(:version => 20120321181300) do
 
   create_table "ips", :force => true do |t|
     t.string   "ipaddress"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20120216090852) do
     t.string   "routermac"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "descr"
   end
 
   create_table "vinos", :force => true do |t|

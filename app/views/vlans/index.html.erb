@@ -1,48 +1,6 @@
-<h1>Таблица вланов</h1>
-<nav>
-	<%= link_to "Вланы", vlans_rangecreate_path, :method => :get %>
-  <%= link_to "Точки терминирования", terminate_points_path, :method => :get %>
-	<%= link_to "Выносы", vinos_path, :method => :get %>
-	<%= link_to "Автоматически выдать влан", vlans_autocreate_path, :method => :get %>
-	<%= link_to "Выдать влан вручную", vlans_manualcreate_path, :method => :get %>
-	<%= link_to "Зарезервировать диапозон вланов", vlans_rangecreate_path %>
-</nav>
-<table>
-	<tr>
-		<th>Влан PVID</th>
-		<th>Используется</th>
-		<th>Адреса на которых используется</th>
-		<th>Примечание</th>
-		<th>Вынос</th>
-		<th>Терминируется на</th>
-		<th>Может быть BD</th>
-		<th>Bridge Domain</th>
-		<%# Еще добавить ответственного, когда создан %>
-	</tr>
-	<% @vlans.each do |vlan| -%>
-		<tr>
-			<td><%= vlan.vlanpvid %></td>
-			<td><%= vlan.used %></td>
-			<td><%= vlan.address %></td>
-			<td><%= vlan.descr %></td>
-			<td><%= vlan.vino.vinosname %></td>
-			<td><%= vlan.vino.terminate_point.routerip %></td>
-			<td>
-				<% if vlan.canbebd!=true %>
-					<%= link_to "bd on", "vlanbdon/#{vlan.id}", :method => :get %>
-				<% else %>
-					<%= link_to "bd off", "vlanbdoff/#{vlan.id}", :method => :get %>
-				<% end -%>
-			</td>
-			<td>
-				<%= vlan.bridgedomain.vlanpvid if vlan.bridgedomain %>
-				<%= link_to "Сменить", "changebd/#{vlan.id}", :method => :get %>
-			</td>
-			<td>
-				<%= link_to "Удалить влан", "vlan/#{vlan.id}", :method => :delete %>
-				<%= link_to "Редактировать влан", "vlan/#{vlan.id}", :method => :get %>
-			</td>
-		</tr>
-	<% end -%>
-</table>
-
+<h1>База учета вланов ДДС</h1>
+<%= button_to "Выдать новый влан и/или бридж домен на выносе", vlans_autocreate_path, :method => :get %><br />
+<%= button_to "Зарезервировать дипозон свободных вланов под вынос", vlans_rangecreate_path, :method => :get %><br />
+<%= button_to "Таблица выносов и управление ими", vinos_path, :method => :get %><br />
+<%= button_to "Таблица точек терминирования и управления ими", terminate_points_path, :method => :get %><br />
+<%= button_to "Сводная таблица всех вланов", allvlans_path, :method => :get %><br />

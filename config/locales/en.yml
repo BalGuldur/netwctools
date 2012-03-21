@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    submit:
+      create: "Создать %{model}"
+      update: "Обновить %{model}"

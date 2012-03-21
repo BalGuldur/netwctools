@@ -1,5 +1,8 @@
 class VlansController < ApplicationController
   def index
+  end
+
+  def allvlans
 		@vlans=Vlan.all
   end
 
@@ -28,8 +31,16 @@ class VlansController < ApplicationController
 
   def autocreate2
     @vino=Vino.find(params[:vino_id])
-    @bd=Vlan.find(params[:bd_id])
-
+    @bd=Vlan.find(params[:bd_id]) if params[:bd_id] != nil
+    @freevlan=@vino.freevlan
+    @freevlan.used=true
+    if params[:bd_id] != nil
+      @freevlan.bridgedomain=@bd
+      @freevlan.canbebd=false
+    else
+      @freevlan.canbebd=true
+    end
+    @freevlan.save
   end
 
   def manualcreate

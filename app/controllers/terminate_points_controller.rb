@@ -12,14 +12,14 @@ class TerminatePointsController < ApplicationController
 
   # GET /terminate_points/1
   # GET /terminate_points/1.json
-  def show
-    @terminate_point = TerminatePoint.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @terminate_point }
-    end
-  end
+# def show
+#   @terminate_point = TerminatePoint.find(params[:id])
+#
+#   respond_to do |format|
+#     format.html # show.html.erb
+#     format.json { render json: @terminate_point }
+#   end
+# end
 
   # GET /terminate_points/new
   # GET /terminate_points/new.json
@@ -44,7 +44,7 @@ class TerminatePointsController < ApplicationController
 
     respond_to do |format|
       if @terminate_point.save
-        format.html { redirect_to @terminate_point, notice: 'Terminate point was successfully created.' }
+        format.html { redirect_to :back, notice: 'Terminate point was successfully created.' }
         format.json { render json: @terminate_point, status: :created, location: @terminate_point }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class TerminatePointsController < ApplicationController
 
     respond_to do |format|
       if @terminate_point.update_attributes(params[:terminate_point])
-        format.html { redirect_to @terminate_point, notice: 'Terminate point was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Terminate point was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
