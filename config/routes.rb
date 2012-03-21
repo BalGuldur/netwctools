@@ -1,6 +1,7 @@
 Netwctools::Application.routes.draw do
   get "vlans" => 'vlans#index'
   get "vlans/autocreate"
+  post "vlans/autocreate2"
   get "vlans/manualcreate"
 	get "vlans/rangecreate"
 	post "vlans/genfromrange"

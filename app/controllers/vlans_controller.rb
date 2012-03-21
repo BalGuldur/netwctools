@@ -22,6 +22,14 @@ class VlansController < ApplicationController
 	end
 
   def autocreate
+    @vinos=Vino.all
+    @bds=Vlan.find_all_by_canbebd(true)
+  end
+
+  def autocreate2
+    @vino=Vino.find(params[:vino_id])
+    @bd=Vlan.find(params[:bd_id])
+
   end
 
   def manualcreate
