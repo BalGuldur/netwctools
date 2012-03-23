@@ -8,7 +8,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body style="background: #EEEEEE;">
-<nav><%= link_to "Главная", "/index" %></nav>
+<nav><%= link_to "Главная", "/index" %>
+<%= link_to "Подсети", "/networks" %>
+<%= link_to "Модели свитчей", "/swmodels" %>
+<%= link_to "Коммутаторы", "/switches" %>
+<%= link_to "Вланы", "/vlans" %></nav>
 <%# yield %>
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 

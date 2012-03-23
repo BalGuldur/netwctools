@@ -1,5 +1,5 @@
 class TerminatePointsController < ApplicationController
-  layout 'terminatepoints'
+  layout 'vlans'
 
   # GET /terminate_points
   # GET /terminate_points.json
