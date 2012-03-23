@@ -1,4 +1,6 @@
 class VinosController < ApplicationController
+  layout 'vlansupmenu'
+
   # GET /vinos
   # GET /vinos.json
   def index

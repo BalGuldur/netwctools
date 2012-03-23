@@ -1,4 +1,6 @@
 class VlansController < ApplicationController
+  layout 'vlansupmenu'
+
   def index
   end
 
