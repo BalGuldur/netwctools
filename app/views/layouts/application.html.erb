@@ -9,7 +9,8 @@
 </head>
 <body style="background: #EEEEEE;">
 <nav><%= link_to "Главная", "/index" %></nav>
-<%= yield %>
+<%# yield %>
+<div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 
 </body>
 </html>

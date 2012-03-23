@@ -1,4 +1,6 @@
 class TerminatePointsController < ApplicationController
+  layout 'terminatepoints'
+
   # GET /terminate_points
   # GET /terminate_points.json
   def index
@@ -44,7 +46,7 @@ class TerminatePointsController < ApplicationController
 
     respond_to do |format|
       if @terminate_point.save
-        format.html { redirect_to :back, notice: 'Terminate point was successfully created.' }
+        format.html { redirect_to terminate_points_path, notice: 'Terminate point was successfully created.' }
         format.json { render json: @terminate_point, status: :created, location: @terminate_point }
       else
         format.html { render action: "new" }
@@ -73,11 +75,12 @@ class TerminatePointsController < ApplicationController
   # DELETE /terminate_points/1.json
   def destroy
     @terminate_point = TerminatePoint.find(params[:id])
-    @terminate_point.destroy
 
-    respond_to do |format|
-      format.html { redirect_to terminate_points_url }
-      format.json { head :ok }
+    if @terminate_point.vlans==[] and @terminate_point.vinos==[]
+      @terminate_point.destroy
+      redirect_to terminate_points_path, notice: 'Terminate point del succefull' 
+    else
+      redirect_to terminate_points_path, error: "Can't remove Terminate point, pls del vlans and vinoses linked with this terminate point"
     end
   end
 end
