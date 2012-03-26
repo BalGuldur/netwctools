@@ -80,7 +80,12 @@ class TerminatePointsController < ApplicationController
       @terminate_point.destroy
       redirect_to terminate_points_path, notice: 'Terminate point del succefull' 
     else
-      redirect_to terminate_points_path, error: "Can't remove Terminate point, pls del vlans and vinoses linked with this terminate point"
+      redirect_to terminate_points_path, notice: "Can't remove Terminate point, pls del vlans and vinoses linked with this terminate point"
     end
+  end
+
+  def tpvlans
+    @vlans=TerminatePoint.find(params[:id]).vlans
+    render 'vlans/allvlans'
   end
 end

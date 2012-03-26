@@ -1,5 +1,5 @@
 <h1>Выносы</h1>
-
+<p id="notice"><%= notice %></p>
 <table>
   <tr>
     <th>Имя выноса</th>
@@ -15,9 +15,9 @@
     <td><%= vino.vinosname %></td>
     <td><%= vino.descr %></td>
     <td><%= vino.terminate_point.routerip %></td>
-    <td><%= link_to 'Show', vino %></td>
-    <td><%= link_to 'Edit', edit_vino_path(vino) %></td>
-    <td><%= link_to 'Destroy', vino, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Редактировать', edit_vino_path(vino) %></td>
+    <td><%= link_to 'Удалить', vino, confirm: 'Вы уверены?', method: :delete %></td>
+    <td><%= link_to 'Вланы этого выноса', "vinovlans/#{vino.id}", method: :post %></td>
   </tr>
 <% end %>
 </table>

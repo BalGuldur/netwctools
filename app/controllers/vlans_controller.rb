@@ -5,7 +5,16 @@ class VlansController < ApplicationController
   end
 
   def allvlans
-		@vlans=Vlan.all
+  end
+
+  def allusedvlans
+		@vlans=Vlan.find_all_by_used(true)
+    render 'allvlans'
+  end
+
+  def allnotusedvlans
+    @vlans=Vlan.find_all_by_used(false)
+    render 'allvlans'
   end
 
 	def rangecreate

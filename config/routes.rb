@@ -1,6 +1,10 @@
 Netwctools::Application.routes.draw do
+  post "tpvlans/:id" => 'terminate_points#tpvlans'
+  post "vinovlans/:id" => 'vinos#vinovlans'
   get "vlans" => 'vlans#index'
   get "allvlans" => 'vlans#allvlans'
+  get "allusedvlans" => 'vlans#allusedvlans'
+  get "allnotusedvlans" => 'vlans#allnotusedvlans'
   get "vlans/autocreate"
   post "vlans/autocreate2"
   get "vlans/manualcreate"
@@ -13,7 +17,7 @@ Netwctools::Application.routes.draw do
   delete "vlan/:id" => 'vlans#destroy'
   get "vlan/:id" => 'vlans#edit'
 
-  resources :vinos
+  resources :vinos, :except => :show
 
   resources :terminate_points, :except => [:show]
 
