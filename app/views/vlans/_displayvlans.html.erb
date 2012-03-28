@@ -9,46 +9,31 @@
 		<% style[:notused]="color:red" %>
 	<% end -%>
 	<div>
-    <%= link_to 'Занятые', "#{request.path}"+'?used=true', {:style=>style[:used]} %>
-    <%= link_to 'Свободные', "#{request.path}"+'?used=false', {:style=>style[:notused]} %>
+    <%= link_to 'Занятые', request.path+'?used=true', {:style=>style[:used]} %>
+    <%= link_to 'Свободные', request.path+'?used=false', {:style=>style[:notused]} %>
 	</div>
 </nav>
 <% if @used==true %>
   <% @bds.each do |bd| %>
-    <h3>Бридж домен <%= bd.vlanpvid %><%= request.query_parameters %><%= @showbds["#{bd.vlanpvid}"] %><%= link_to '+-', "#{request.path}"%></h3>
+    <h3>Бридж домен 
+      <%= bd.vlanpvid %>
+      <% truepath=request.url %>
+      <% bdarg='&' %>
+      <% bdarg='?' if !truepath.include?('?') %>
+      <% bdarg<<"showbds["+bd.vlanpvid.to_s+"]=true" %>
+      <% if @showbds[bd.vlanpvid.to_s]==nil %>
+        <%= link_to '+', truepath+bdarg %>
+      <% else %>
+        <%= link_to '-', truepath.gsub!(bdarg,'') %>
+      <% end %>
+    </h3>
 
-
-
-    <% if @showbds["#{bd.vlanpvid}"]=="true" %>
-<table>
-	<tr>
-		<th>Влан PVID</th>
-		<th>Адреса на которых используется</th>
-		<th>Примечание</th>
-		<th>Вынос</th>
-		<th>Терминируется на</th>
-		<%# Еще добавить ответственного, когда создан %>
-	</tr>
-	<% @vlans.each do |vlan| -%>
-		<% if vlan.used==@used %>
-			<tr>
-				<td><%= vlan.vlanpvid %></td>
-				<td><%= vlan.address %></td>
-				<td><%= vlan.descr %></td>
-				<td><%= vlan.vino.vinosname %></td>
-				<td><%= vlan.vino.terminate_point.routerip %></td>
-				<% if @used==true %>
-					<td>
-						<%= link_to "Освободить влан", "vlan/#{vlan.id}", :method => :delete %>
-						<%= link_to "Редактировать влан", "vlan/#{vlan.id}", :method => :get %>
-					</td>
-				<% end -%>
-			</tr>
-		<% end -%>
-	<% end -%>
-</table>
-<% end -%>
-
-
-<% end -%>
+    <% if @showbds[bd.vlanpvid.to_s]=="true" %>
+      <% @vlans=bd.subvlans %>
+      <%= render :partial => 'tableofvlans' %> 
+    <% end -%>
+  <% end -%>
+<% else %>
+  <% @vlans=Vlan.all %>
+  <%= render :partial => 'tableofvlans' %>
 <% end -%>
