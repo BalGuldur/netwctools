@@ -1,12 +1,25 @@
 <h1>Отображение Вланов</h1>
-<% @bds.each do |bd| %>
-	<h3>Бридж домен <%= bd.vlanpvid %><%= link_to '+-', "#{request.url}"+"?used=#{@used}&showedbd=#{bd.vlanpvid}" %></h3>
-<% end -%>
+<nav>
+	<% style = Hash.new %>
+	<% if @used==true %>
+		<% style[:used]="color:red" %>
+		<% style[:notused]="color:black" %>
+	<% else %>
+		<% style[:used]="color:black" %>
+		<% style[:notused]="color:red" %>
+	<% end -%>
+	<div>
+    <%= link_to 'Занятые', "#{request.path}"+'?used=true', {:style=>style[:used]} %>
+    <%= link_to 'Свободные', "#{request.path}"+'?used=false', {:style=>style[:notused]} %>
+	</div>
+</nav>
+<% if @used==true %>
+  <% @bds.each do |bd| %>
+    <h3>Бридж домен <%= bd.vlanpvid %><%= request.query_parameters %><%= @showbds["#{bd.vlanpvid}"] %><%= link_to '+-', "#{request.path}"%></h3>
 
 
 
-
-
+    <% if @showbds["#{bd.vlanpvid}"]=="true" %>
 <table>
 	<tr>
 		<th>Влан PVID</th>
@@ -34,4 +47,8 @@
 		<% end -%>
 	<% end -%>
 </table>
+<% end -%>
 
+
+<% end -%>
+<% end -%>

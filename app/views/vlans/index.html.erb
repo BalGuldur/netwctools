@@ -1,16 +1,2 @@
 <h1>База учета вланов ДДС</h1>
-<nav>
-	<% style = Hash.new %>
-	<% if @used==true %>
-		<% style[:used]="color:red" %>
-		<% style[:notused]="color:black" %>
-	<% else %>
-		<% style[:used]="color:black" %>
-		<% style[:notused]="color:red" %>
-	<% end -%>
-	<div>
-		<%= link_to 'Занятые', vlans_path+'?used=true', {:style=>style[:used]} %>
-		<%= link_to 'Свободные', vlans_path+'?used=false', {:style=>style[:notused]} %>
-	</div>
-</nav>
 <%= render :partial => 'displayvlans' %>
