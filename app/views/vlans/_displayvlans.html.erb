@@ -1,6 +1,6 @@
 <h1>Отображение Вланов</h1>
 <% @bds.each do |bd| %>
-	<h3>Бридж домен <%= bd.vlanpvid %></h3>
+	<h3>Бридж домен <%= bd.vlanpvid %><%= link_to '+-', "#{request.url}"+"?used=#{@used}&showedbd=#{bd.vlanpvid}" %></h3>
 <% end -%>
 
 
@@ -14,8 +14,6 @@
 		<th>Примечание</th>
 		<th>Вынос</th>
 		<th>Терминируется на</th>
-		<th>Может быть BD</th>
-		<th>Bridge Domain</th>
 		<%# Еще добавить ответственного, когда создан %>
 	</tr>
 	<% @vlans.each do |vlan| -%>
@@ -26,17 +24,6 @@
 				<td><%= vlan.descr %></td>
 				<td><%= vlan.vino.vinosname %></td>
 				<td><%= vlan.vino.terminate_point.routerip %></td>
-				<td>
-					<% if vlan.canbebd!=true %>
-						<%= link_to "bd on", "vlanbdon/#{vlan.id}", :method => :get %>
-					<% else %>
-						<%= link_to "bd off", "vlanbdoff/#{vlan.id}", :method => :get %>
-					<% end -%>
-				</td>
-				<td>
-					<%= vlan.bridgedomain.vlanpvid if vlan.bridgedomain %>
-					<%= link_to "Сменить", "changebd/#{vlan.id}", :method => :get %>
-				</td>
 				<% if @used==true %>
 					<td>
 						<%= link_to "Освободить влан", "vlan/#{vlan.id}", :method => :delete %>
