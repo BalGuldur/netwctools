@@ -2,7 +2,6 @@
 <table>
 	<tr>
 		<th>Влан PVID</th>
-		<th>Используется</th>
 		<th>Адреса на которых используется</th>
 		<th>Примечание</th>
 		<th>Вынос</th>
@@ -15,7 +14,6 @@
 		<% if vlan.used==@used %>
 			<tr>
 				<td><%= vlan.vlanpvid %></td>
-				<td><%= vlan.used %></td>
 				<td><%= vlan.address %></td>
 				<td><%= vlan.descr %></td>
 				<td><%= vlan.vino.vinosname %></td>
@@ -31,10 +29,12 @@
 					<%= vlan.bridgedomain.vlanpvid if vlan.bridgedomain %>
 					<%= link_to "Сменить", "changebd/#{vlan.id}", :method => :get %>
 				</td>
-				<td>
-					<%= link_to "Удалить влан", "vlan/#{vlan.id}", :method => :delete %>
-					<%= link_to "Редактировать влан", "vlan/#{vlan.id}", :method => :get %>
-				</td>
+				<% if @used==true %>
+					<td>
+						<%= link_to "Освободить влан", "vlan/#{vlan.id}", :method => :delete %>
+						<%= link_to "Редактировать влан", "vlan/#{vlan.id}", :method => :get %>
+					</td>
+				<% end -%>
 			</tr>
 		<% end -%>
 	<% end -%>
