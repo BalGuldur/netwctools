@@ -3,6 +3,7 @@ class VlansController < ApplicationController
 
   def index
 		@vlans=Vlan.all
+		@bds=Vlan.find_all_by_canbebd(true)
 		@used=true
 		@used=false if params[:used]=="false"
   end

@@ -1,4 +1,12 @@
 <h1>Отображение Вланов</h1>
+<% @bds.each do |bd| %>
+	<h3>Бридж домен <%= bd.vlanpvid %></h3>
+<% end -%>
+
+
+
+
+
 <table>
 	<tr>
 		<th>Влан PVID</th>
