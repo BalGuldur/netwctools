@@ -2,6 +2,9 @@ class VlansController < ApplicationController
   layout 'vlansupmenu'
 
   def index
+		@vlans=Vlan.all
+		@used=true
+		@used=false if params[:used]=="false"
   end
 
   def allvlans
@@ -42,10 +45,10 @@ class VlansController < ApplicationController
 
   def autocreate2
     @vino=Vino.find(params[:vino_id])
-    @bd=Vlan.find(params[:bd_id]) if params[:bd_id] != nil
+    @bd=Vlan.find(params[:bd_id]) if params[:bd_id] != ""
     @freevlan=@vino.freevlan
     @freevlan.used=true
-    if params[:bd_id] != nil
+    if params[:bi_id] != ""
       @freevlan.bridgedomain=@bd
       @freevlan.canbebd=false
     else

@@ -1,0 +1,7 @@
+<h1>База учета вланов ДДС</h1>
+<%= button_to "Выдать новый влан и/или бридж домен на выносе", vlans_autocreate_path, :method => :get %><br />
+<%= button_to "Зарезервировать дипозон свободных вланов под вынос", vlans_rangecreate_path, :method => :get %><br />
+<%= button_to "Таблица выносов и управление ими", vinos_path, :method => :get %><br />
+<%= button_to "Таблица точек терминирования и управления ими", terminate_points_path, :method => :get %><br />
+<%= button_to "Сводная таблица ЗАНЯТЫХ вланов", allusedvlans_path, :method => :get %><br />
+<%= button_to "Сводная таблица СВОБОДНЫХ зарезервированных под выносы вланов", allnotusedvlans_path, :method => :get %><br />
