@@ -1,0 +1,17 @@
+<% style = Hash.new %>
+<% if @used==true %>
+	<% style[:used]="color:red" %>
+	<% style[:notused]="color:black" %>
+<% else %>
+	<% style[:used]="color:black" %>
+	<% style[:notused]="color:red" %>
+<% end -%>
+<div>
+	<% paramet=request.query_parameters %>
+	<% backup=paramet[:used] %>
+	<% paramet[:used]="true" %>
+	<%= link_to "Занятые", vlans_path(paramet), {:style=>style[:used]} %>
+	<% paramet[:used]="false" %>
+	<%= link_to "Свободные", vlans_path(paramet), {:style=>style[:notused]} %>
+	<% paramet[:used]=backup %>
+</div>

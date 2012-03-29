@@ -1,0 +1,36 @@
+<% @bds.each do |bd| %>
+  <h3>Бридж домен 
+    <%= bd.vlanpvid %>
+    <%= bd.vino.vinosname %>
+    <%= bd.terminate_point.routerip %>
+
+		<% paramet=Hash.new %>
+		<%= request.query_parameters.each {|a,b| paramet[a]=b} %>
+		<% if paramet.has_value?({bd.vlanpvid.to_s=>"true"}) %>
+			<%= paramet["showbds"]=nil %>
+			<%= link_to '-', vlans_path(paramet) %>
+		<% elsif paramet.has_key?("showbds") %>
+			<% paramet["showbds"].merge!({bd.vlanpvid.to_s => "true"}) %>
+			<%= link_to '+', vlans_path(paramet) %>
+		<% else %>
+			<% paramet["showbds"]={bd.vlanpvid.to_s => "true"} %>
+			<%= link_to '+', vlans_path(paramet) %>
+		<% end -%>
+		<%= request.query_parameters %>
+
+    <%# truepath=request.url %>
+    <%# bdarg='&' %>
+    <%# bdarg='?' if !truepath.include?('?') %>
+    <%# bdarg<<"showbds["+bd.vlanpvid.to_s+"]=true" %>
+    <%# if @showbds[bd.vlanpvid.to_s]==nil %>
+      <%#= link_to '+', truepath+bdarg %>
+    <%# else %>
+      <%#= link_to '-', truepath.gsub!(bdarg,'') %>
+    <%# end %>
+  </h3>
+
+  <% if @showbds[bd.vlanpvid.to_s]=="true" %>
+    <% @vlans=bd.subvlans %>
+    <%= render :partial => 'tableofvlans' %> 
+  <% end -%>
+<% end -%>

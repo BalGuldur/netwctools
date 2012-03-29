@@ -1,17 +1,6 @@
 <h1>Отображение Вланов</h1>
 <nav>
-	<% style = Hash.new %>
-	<% if @used==true %>
-		<% style[:used]="color:red" %>
-		<% style[:notused]="color:black" %>
-	<% else %>
-		<% style[:used]="color:black" %>
-		<% style[:notused]="color:red" %>
-	<% end -%>
-	<div>
-    <%= link_to 'Занятые', request.path+'?used=true', {:style=>style[:used]} %>
-    <%= link_to 'Свободные', request.path+'?used=false', {:style=>style[:notused]} %>
-	</div>
+	<%= render :partial => 'menuused' %>
   <div>
     <h3>
       <% Myuser.all.each do |myuser| %>
@@ -21,27 +10,7 @@
   </div>
 </nav>
 <% if @used==true %>
-  <% @bds.each do |bd| %>
-    <h3>Бридж домен 
-      <%= bd.vlanpvid %>
-      <%= bd.vino.vinosname %>
-      <%= bd.terminate_point.routerip %>
-      <% truepath=request.url %>
-      <% bdarg='&' %>
-      <% bdarg='?' if !truepath.include?('?') %>
-      <% bdarg<<"showbds["+bd.vlanpvid.to_s+"]=true" %>
-      <% if @showbds[bd.vlanpvid.to_s]==nil %>
-        <%= link_to '+', truepath+bdarg %>
-      <% else %>
-        <%= link_to '-', truepath.gsub!(bdarg,'') %>
-      <% end %>
-    </h3>
-
-    <% if @showbds[bd.vlanpvid.to_s]=="true" %>
-      <% @vlans=bd.subvlans %>
-      <%= render :partial => 'tableofvlans' %> 
-    <% end -%>
-  <% end -%>
+	<%= render :partial => 'dispbds' %>
 <% else %>
   <% @vlans=Vlan.all %>
   <%= render :partial => 'tableofvlans' %>

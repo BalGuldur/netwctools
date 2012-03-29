@@ -56,7 +56,7 @@ class VlansController < ApplicationController
     @bd=Vlan.find(params[:bd_id]) if params[:bd_id] != ""
     @freevlan=@vino.freevlan
     @freevlan.used=true
-    if params[:bi_id] != ""
+    if params[:bd_id] != ""
       @freevlan.bridgedomain=@bd
       @freevlan.canbebd=false
     else
