@@ -12,11 +12,20 @@
     <%= link_to 'Занятые', request.path+'?used=true', {:style=>style[:used]} %>
     <%= link_to 'Свободные', request.path+'?used=false', {:style=>style[:notused]} %>
 	</div>
+  <div>
+    <h3>
+      <% Myuser.all.each do |myuser| %>
+        <%= link_to myuser.name, request.path+'?myuser='+myuser.name %>
+      <% end -%>
+    </h3>
+  </div>
 </nav>
 <% if @used==true %>
   <% @bds.each do |bd| %>
     <h3>Бридж домен 
       <%= bd.vlanpvid %>
+      <%= bd.vino.vinosname %>
+      <%= bd.terminate_point.routerip %>
       <% truepath=request.url %>
       <% bdarg='&' %>
       <% bdarg='?' if !truepath.include?('?') %>

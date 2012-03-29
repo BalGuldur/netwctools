@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120321181300) do
+ActiveRecord::Schema.define(:version => 20120329082429) do
 
   create_table "ips", :force => true do |t|
     t.string   "ipaddress"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(:version => 20120321181300) do
   create_table "ips_switches", :force => true do |t|
     t.integer  "ip_id"
     t.integer  "switch_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "myusers", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20120321181300) do
     t.integer  "terminate_point_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "myuser_id"
   end
 
   create_table "vlans", :force => true do |t|

@@ -1,6 +1,8 @@
 class VlansController < ApplicationController
   layout 'vlansupmenu'
 
+  attr_accessor :showbds2
+
   def index
 		@vlans=Vlan.all
 		@bds=Vlan.find_all_by_canbebd(true)

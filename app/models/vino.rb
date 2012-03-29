@@ -1,4 +1,5 @@
 class Vino < ActiveRecord::Base
+  belongs_to :myuser
 	belongs_to :terminate_point
 	has_many :vlans
 

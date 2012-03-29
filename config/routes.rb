@@ -1,4 +1,6 @@
 Netwctools::Application.routes.draw do
+  resources :myusers
+
   post "tpvlans/:id" => 'terminate_points#tpvlans'
   post "vinovlans/:id" => 'vinos#vinovlans'
   get "showbds/:id" => 'vlans#showbds'
