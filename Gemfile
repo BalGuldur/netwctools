@@ -9,6 +9,8 @@ gem 'therubyracer'
 gem 'sqlite3'
 gem 'netaddr'
 gem 'snmp'
+gem 'devise', '~> 1.4'
+gem "devise_ldap_authenticatable"
 
 # Gems used only for assets and not required
 # in production environments by default.
