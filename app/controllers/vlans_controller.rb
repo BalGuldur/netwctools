@@ -2,7 +2,7 @@ class VlansController < ApplicationController
   layout 'vlansupmenu'
 
 	def index
-		redirect_to :dispvlans
+		@domains=Domain.all
 	end
 
 	def dispvlans

@@ -1,4 +1,3 @@
-<h1>База учета вланов ДДС</h1>
 <nav>
 <% Myuser.all.each do |myuser| %>
 	<%= link_to myuser.name, dispvlans_path(:user => myuser.id, used:@used) %>

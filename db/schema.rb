@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120329082429) do
+ActiveRecord::Schema.define(:version => 20120402120408) do
+
+  create_table "domains", :force => true do |t|
+    t.string   "name"
+    t.string   "descr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "domains_terminate_points", :force => true do |t|
+    t.integer  "domain_id"
+    t.integer  "terminate_point_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ips", :force => true do |t|
     t.string   "ipaddress"
@@ -31,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20120329082429) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "domain_id"
   end
 
   create_table "networks", :force => true do |t|
@@ -69,7 +84,6 @@ ActiveRecord::Schema.define(:version => 20120329082429) do
     t.integer  "terminate_point_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "myuser_id"
   end
 
   create_table "vlans", :force => true do |t|
@@ -82,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20120329082429) do
     t.integer  "bridgedomain_id"
     t.boolean  "canbebd"
     t.integer  "vino_id"
+    t.integer  "domain_id"
   end
 
 end

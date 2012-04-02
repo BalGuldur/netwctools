@@ -1,4 +1,6 @@
 Netwctools::Application.routes.draw do
+  resources :domains
+
   resources :myusers
 
 	get "dispvlans" => 'vlans#dispvlans'

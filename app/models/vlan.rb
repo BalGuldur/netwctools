@@ -4,6 +4,6 @@ class Vlan < ActiveRecord::Base
 
 	belongs_to :vino
 	has_one :terminate_point, :through => :vino 
-	has_one :myuser, :through => :vino
+	has_one :domain
 
 end

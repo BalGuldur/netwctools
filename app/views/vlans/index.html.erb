@@ -1,0 +1,14 @@
+<table>
+	<tr>
+		<th>Название</th>
+		<th>Примечание</th>
+		<th>Ответственный</th>
+	</tr>
+	<% @domains.each do |domain| %>
+		<tr>
+			<%= domain.name %>
+			<%= domain.descr %>
+			<%= domain.myuser.name %>
+		</tr>
+	<% end -%>
+</table>
