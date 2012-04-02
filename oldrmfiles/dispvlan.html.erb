@@ -1,4 +1,4 @@
-<h1>Отображение Вланов</h1>
+<h1>База учета вланов ДДС</h1>
 <nav>
 	<%= render :partial => 'menuused' %>
   <div>
@@ -12,6 +12,5 @@
 <% if @used==true %>
 	<%= render :partial => 'dispbds' %>
 <% else %>
-  <% @vlans=Vlan.all %>
-  <%= render :partial => 'tableofvlans' %>
+  <%#= render :partial => 'tableofvlans' %>
 <% end -%>

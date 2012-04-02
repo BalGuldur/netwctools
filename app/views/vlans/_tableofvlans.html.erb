@@ -3,18 +3,16 @@
 		<th>Влан PVID</th>
 		<th>Адреса на которых используется</th>
 		<th>Примечание</th>
-		<th>Вынос</th>
-		<th>Терминируется на</th>
 		<%# Еще добавить ответственного, когда создан %>
 	</tr>
-	<% @vlans.each do |vlan| -%>
+	<% @showvlans.each do |vlan| -%>
 		<% if vlan.used==@used %>
 			<tr>
 				<td><%= vlan.vlanpvid %></td>
 				<td><%= vlan.address %></td>
 				<td><%= vlan.descr %></td>
-				<td><%= vlan.vino.vinosname %></td>
-				<td><%= vlan.vino.terminate_point.routerip %></td>
+				<td><%#= vlan.vino.vinosname %></td>
+				<td><%#= vlan.vino.terminate_point.routerip %></td>
 				<% if @used==true %>
 					<td>
 						<%= link_to "Освободить влан", "vlan/#{vlan.id}", :method => :delete %>

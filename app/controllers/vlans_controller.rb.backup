@@ -1,20 +1,32 @@
 class VlansController < ApplicationController
   layout 'vlansupmenu'
 
-	def index
-		redirect_to :dispvlans
-	end
+  attr_accessor :showbds2
 
-	def dispvlans
-		@user=params.has_key?(:user) ? params[:user] : nil
-		@used=params.has_key?(:used) ? (params[:used]=='true' ? true : false) : true
-		@showbds=params.has_key?(:showbds) ? params[:showbds] : Hash.new
+  def index
+		@vlans=Vlan.all
+		@bds=Vlan.find_all_by_canbebd(true)
+		@used=true
+		@used=false if params[:used]=="false"
+    if params[:showbds]==nil
+      @showbds=Hash.new
+    else
+      @showbds=params[:showbds]
+    end
+  end
 
-		@vlans=(@user!=nil ? Myuser.find(@user).vlans : Vlan.all)
-		@bds=@vlans
-		@bds=@bds.find_all{|bd|bd.canbebd==true}
-		@vlans.find_all{|vlan|vlan.used==@used}
-	end
+  def allvlans
+  end
+
+  def allusedvlans
+		@vlans=Vlan.find_all_by_used(true)
+    render 'allvlans'
+  end
+
+  def allnotusedvlans
+    @vlans=Vlan.find_all_by_used(false)
+    render 'allvlans'
+  end
 
 	def rangecreate
 		#@range=Rangevlan.new

@@ -1,36 +1,25 @@
 <% @bds.each do |bd| %>
-  <h3>Бридж домен 
-    <%= bd.vlanpvid %>
-    <%= bd.vino.vinosname %>
-    <%= bd.terminate_point.routerip %>
-
-		<% paramet=Hash.new %>
-		<%= request.query_parameters.each {|a,b| paramet[a]=b} %>
-		<% if paramet.has_value?({bd.vlanpvid.to_s=>"true"}) %>
-			<%= paramet["showbds"]=nil %>
-			<%= link_to '-', vlans_path(paramet) %>
-		<% elsif paramet.has_key?("showbds") %>
-			<% paramet["showbds"].merge!({bd.vlanpvid.to_s => "true"}) %>
-			<%= link_to '+', vlans_path(paramet) %>
+	<h3 style='display:inline'>
+		<%= bd.vlanpvid %>
+	</h3>
+	Вынос: 
+	<%= bd.vino.vinosname %>
+	Точка терминирования: 
+	<%= bd.terminate_point.routerip %>
+	<% if @showbds.has_key?(bd.vlanpvid.to_s) %>
+		<% if @showbds[bd.vlanpvid.to_s]=='true' %>
+			<%= 'true' %>
+			<%= link_to '-', dispvlans_path(:showbds => {bd.vlanpvid.to_s => false}.merge(@showbds){|key,oldval,newval|oldval}, used:@used) %>
 		<% else %>
-			<% paramet["showbds"]={bd.vlanpvid.to_s => "true"} %>
-			<%= link_to '+', vlans_path(paramet) %>
+			<%= 'false' %>
+			<%= link_to '+', dispvlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds){|key,oldval,newval|oldval}, used:@used) %>
 		<% end -%>
-		<%= request.query_parameters %>
-
-    <%# truepath=request.url %>
-    <%# bdarg='&' %>
-    <%# bdarg='?' if !truepath.include?('?') %>
-    <%# bdarg<<"showbds["+bd.vlanpvid.to_s+"]=true" %>
-    <%# if @showbds[bd.vlanpvid.to_s]==nil %>
-      <%#= link_to '+', truepath+bdarg %>
-    <%# else %>
-      <%#= link_to '-', truepath.gsub!(bdarg,'') %>
-    <%# end %>
-  </h3>
-
-  <% if @showbds[bd.vlanpvid.to_s]=="true" %>
-    <% @vlans=bd.subvlans %>
-    <%= render :partial => 'tableofvlans' %> 
-  <% end -%>
+	<% else %>
+		<%='net voobshe' %>
+		<%= link_to '+', dispvlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds), used:@used) %>
+	<% end -%>
+			
+	<% @showvlans=bd.subvlans %>
+	<br />
+	<%= render :partial => 'tableofvlans' if @showbds[bd.vlanpvid.to_s]=='true' %>
 <% end -%>

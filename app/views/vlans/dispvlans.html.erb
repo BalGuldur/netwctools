@@ -1,0 +1,15 @@
+<h1>База учета вланов ДДС</h1>
+<nav>
+<% Myuser.all.each do |myuser| %>
+	<%= link_to myuser.name, dispvlans_path(:user => myuser.id, used:@used) %>
+<% end -%>
+<br />
+<%= link_to 'Занятые', dispvlans_path(:showbds => {}.merge(@showbds), used:true, :user => @user) %>
+<%= link_to 'Свободные', dispvlans_path(:showbds => {}.merge(@showbds), used:false, :user => @user) %>
+</nav>
+<% if @used==true %>
+	<%= render :partial => 'dispbds' %>
+<% else %>
+	<% @showvlans=@vlans %>
+  <%= render :partial => 'tableofvlans' %>
+<% end -%>

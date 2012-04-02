@@ -1,0 +1,16 @@
+<nav>
+	<%= render :partial => 'menuused' %>
+  <div>
+    <h3>
+      <% Myuser.all.each do |myuser| %>
+        <%= link_to myuser.name, request.path+'?myuser='+myuser.name %>
+      <% end -%>
+    </h3>
+  </div>
+</nav>
+<% if @used==true %>
+	<%= render :partial => 'dispbds' %>
+<% else %>
+  <% @vlans=Vlan.all %>
+  <%= render :partial => 'tableofvlans' %>
+<% end -%>
