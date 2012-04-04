@@ -9,14 +9,14 @@
 	<% if @showbds.has_key?(bd.vlanpvid.to_s) %>
 		<% if @showbds[bd.vlanpvid.to_s]=='true' %>
 			<%= 'true' %>
-			<%= link_to '-', dispvlans_path(:showbds => {bd.vlanpvid.to_s => false}.merge(@showbds){|key,oldval,newval|oldval}, used:@used) %>
+			<%= link_to '-', dispvlans_path(:showbds => {bd.vlanpvid.to_s => false}.merge(@showbds){|key,oldval,newval|oldval}, used:@used, :domains => @domain) %>
 		<% else %>
 			<%= 'false' %>
-			<%= link_to '+', dispvlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds){|key,oldval,newval|oldval}, used:@used) %>
+			<%= link_to '+', dispvlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds){|key,oldval,newval|oldval}, used:@used, :domains => @domain) %>
 		<% end -%>
 	<% else %>
 		<%='net voobshe' %>
-		<%= link_to '+', dispvlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds), used:@used) %>
+		<%= link_to '+', dispvlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds), used:@used, :domains => @domain) %>
 	<% end -%>
 			
 	<% @showvlans=bd.subvlans %>

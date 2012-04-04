@@ -1,11 +1,13 @@
 <nav>
-<% Myuser.all.each do |myuser| %>
-	<%= link_to myuser.name, dispvlans_path(:user => myuser.id, used:@used) %>
+<% Domain.all.each do |domain| %>
+	<%= link_to domain.name, dispvlans_path(:domains => domain.id, used:@used) %>
 <% end -%>
 <br />
-<%= link_to 'Занятые', dispvlans_path(:showbds => {}.merge(@showbds), used:true, :user => @user) %>
-<%= link_to 'Свободные', dispvlans_path(:showbds => {}.merge(@showbds), used:false, :user => @user) %>
+<%= link_to 'Занятые', dispvlans_path(:showbds => {}.merge(@showbds), used:true, :domains => @domain) %>
+<%= link_to 'Свободные', dispvlans_path(:showbds => {}.merge(@showbds), used:false, :domains => @domain) %>
 </nav>
+<%#= @domain %>
+<%#= @vlans %>
 <% if @used==true %>
 	<%= render :partial => 'dispbds' %>
 <% else %>

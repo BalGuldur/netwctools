@@ -2,15 +2,26 @@ class VlansController < ApplicationController
   layout 'vlansupmenu'
 
 	def index
+		@myusers=Myuser.all
 		@domains=Domain.all
 	end
 
 	def dispvlans
-		@user=params.has_key?(:user) ? params[:user] : nil
+		#@user=params.has_key?(:user) ? params[:user] : nil
+		@domain=params.has_key?(:domains) ? Domain.find(params[:domains]) : nil
 		@used=params.has_key?(:used) ? (params[:used]=='true' ? true : false) : true
 		@showbds=params.has_key?(:showbds) ? params[:showbds] : Hash.new
 
-		@vlans=(@user!=nil ? Myuser.find(@user).vlans : Vlan.all)
+		#@vlans=(@domain!=nil ? Domain.find(@domain).vlans : Vlan.all)
+		
+		@vlans=Array.new
+		if @domain!=nil
+			@domain.terminate_points.each{|tp|
+				tp.vlans.each{|vlan|@vlans.push(vlan)}
+			}
+		else
+			@vlans=Vlan.all
+		end
 		@bds=@vlans
 		@bds=@bds.find_all{|bd|bd.canbebd==true}
 		@vlans.find_all{|vlan|vlan.used==@used}

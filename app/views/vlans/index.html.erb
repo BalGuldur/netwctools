@@ -1,14 +1,10 @@
-<table>
-	<tr>
-		<th>Название</th>
-		<th>Примечание</th>
-		<th>Ответственный</th>
-	</tr>
-	<% @domains.each do |domain| %>
-		<tr>
-			<%= domain.name %>
-			<%= domain.descr %>
-			<%= domain.myuser.name %>
-		</tr>
-	<% end -%>
-</table>
+<%= link_to 'Создать новый домен вланов', new_domain_path %>
+<% @myusers.each do |myuser| %>
+	<h3><%= myuser.name %></h3>
+	<% myuser.domains.each do |domain| %>
+		<h3 style='display:inline'><%= link_to domain.name, dispvlans_path(:domains => domain.id)%></h3>
+		<%= domain.descr %>
+		<%= link_to :Редактировать, edit_domain_path(domain) %>
+		<br />
+	<% end if myuser.domains!=nil -%>
+<% end if @myusers!=nil -%>

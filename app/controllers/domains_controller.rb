@@ -25,6 +25,7 @@ class DomainsController < ApplicationController
   # GET /domains/new.json
   def new
     @domain = Domain.new
+		@myusers = Myuser.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,16 +36,25 @@ class DomainsController < ApplicationController
   # GET /domains/1/edit
   def edit
     @domain = Domain.find(params[:id])
+		@myusers = Myuser.all
   end
 
   # POST /domains
   # POST /domains.json
   def create
+		if (params.has_key?(:user_id) and (params[:user_id]!=nil or params[:user_id]!=""))
+			@user=Myuser.find(params[:user_id])
+		else
+			@newuser=Myuser.new
+			@newuser.name=params[:username]
+			@newuser.save
+		end
     @domain = Domain.new(params[:domain])
+		@domain.myuser=@newuser
 
     respond_to do |format|
       if @domain.save
-        format.html { redirect_to @domain, notice: 'Domain was successfully created.' }
+        format.html { redirect_to vlans_path, notice: 'Domain was successfully created.' }
         format.json { render json: @domain, status: :created, location: @domain }
       else
         format.html { render action: "new" }
