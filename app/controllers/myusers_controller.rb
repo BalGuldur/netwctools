@@ -44,7 +44,7 @@ class MyusersController < ApplicationController
 
     respond_to do |format|
       if @myuser.save
-        format.html { redirect_to @myuser, notice: 'Myuser was successfully created.' }
+        format.html { redirect_to vlans_path, notice: 'Myuser was successfully created.' }
         format.json { render json: @myuser, status: :created, location: @myuser }
       else
         format.html { render action: "new" }
@@ -73,11 +73,16 @@ class MyusersController < ApplicationController
   # DELETE /myusers/1.json
   def destroy
     @myuser = Myuser.find(params[:id])
-    @myuser.destroy
+		respond_to do |format|
+			if @myuser.domains.empty?
+				@myuser.destroy
+				format.html {redirect_to :back, notice: "User deleted" }
+				format.json {head :ok}
+			else
+				format.html {redirect_to :back, alert: "Can't delete, try del all domains for this user"}
+				format.json {render json: @myuser.errors, status: :unprocessable_entity }
+			end
+		end
 
-    respond_to do |format|
-      format.html { redirect_to myusers_url }
-      format.json { head :ok }
-    end
   end
 end

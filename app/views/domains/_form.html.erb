@@ -1,4 +1,4 @@
-<%= form_for(@domain) do |f| %>
+<%= form_for @domain, :url => domains_path(:myuser_id => @myuser.id), :method => :post do |f| %>
   <% if @domain.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@domain.errors.count, "error") %> prohibited this domain from being saved:</h2>
@@ -19,12 +19,6 @@
     <%= f.label :Примечание %><br />
     <%= f.text_field :descr %>
   </div>
-	<div class="field">
-		<%= f.label "Выбрать Ответсвенного" %><br />
-		<%= f.select :myuser_id, options_from_collection_for_select(@myusers, :id, :name, @domain.myuser_id), include_blank:true %><br />
-		Или создать нового пользователя (Выше должно быть выбрано пустое поле)<br />
-		<%= text_field_tag :username %>
-	</div>
 	<div class="field">
 		<%= f.check_box :globaly %>
 		<%= f.label :Глобальный %>
