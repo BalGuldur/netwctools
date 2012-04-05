@@ -15,10 +15,12 @@ class VlansController < ApplicationController
 		#@vlans=(@domain!=nil ? Domain.find(@domain).vlans : Vlan.all)
 		
 		@vlans=Array.new
-		if @domain!=nil
+		if @domain!=nil and @used==true
 			@domain.terminate_points.each{|tp|
 				tp.vlans.each{|vlan|@vlans.push(vlan)}
 			}
+		elsif @domain!=nil
+			@vlans=@domain.vlans
 		else
 			@vlans=Vlan.all
 		end

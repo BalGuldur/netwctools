@@ -9,11 +9,11 @@
 		<% if vlan.used==@used %>
 			<tr>
 				<td><%= vlan.vlanpvid %></td>
-				<td><%= vlan.address %></td>
-				<td><%= vlan.descr %></td>
-				<td><%#= vlan.vino.vinosname %></td>
-				<td><%#= vlan.vino.terminate_point.routerip %></td>
-				<% if @used==true %>
+				<% if @used %>
+					<td><%= vlan.address %></td>
+					<td><%= vlan.descr %></td>
+					<td><%#= vlan.vino.vinosname %></td>
+					<td><%#= vlan.vino.terminate_point.routerip %></td>
 					<td>
 						<%= link_to "Освободить влан", "vlan/#{vlan.id}", :method => :delete %>
 						<%= link_to "Редактировать влан", "vlan/#{vlan.id}", :method => :get %>
