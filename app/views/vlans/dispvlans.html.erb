@@ -8,9 +8,11 @@
 </nav>
 <%#= @domain %>
 <%#= @vlans %>
+<%#= @used %>
 <% if @used==true %>
 	<%= render :partial => 'dispbds' %>
 <% else %>
 	<% @showvlans=@vlans %>
   <%= render :partial => 'tableofvlans' %>
+	<%#= "net" %>
 <% end -%>
