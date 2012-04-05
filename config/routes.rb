@@ -1,5 +1,9 @@
 Netwctools::Application.routes.draw do
-  resources :domains
+  resources :domains do
+		member do
+			get 'rezervrangevlan'
+		end
+	end
 
   resources :myusers
 

@@ -3,8 +3,10 @@
 	<h3><%= myuser.name %></h3>
 	<% myuser.domains.each do |domain| %>
 		<h3 style='display:inline'><%= link_to domain.name, dispvlans_path(:domains => domain.id)%></h3>
-		<%= domain.descr %>
+		<%= "Домен глобальный" if domain.globaly %>
 		<%= link_to :Редактировать, edit_domain_path(domain) %>
+		<%= link_to "Резерв диапозон. вланов", rezervrangevlan_domain_path(domain) %>
 		<br />
+		<%= domain.descr %>
 	<% end if myuser.domains!=nil -%>
 <% end if @myusers!=nil -%>

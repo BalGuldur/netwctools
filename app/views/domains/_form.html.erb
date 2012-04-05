@@ -22,9 +22,12 @@
 	<div class="field">
 		<%= f.label "Выбрать Ответсвенного" %><br />
 		<%= f.select :myuser_id, options_from_collection_for_select(@myusers, :id, :name, @domain.myuser_id), include_blank:true %><br />
-		Или создать нового пользователя<br />
+		Или создать нового пользователя (Выше должно быть выбрано пустое поле)<br />
 		<%= text_field_tag :username %>
 	</div>
+	<div class="field">
+		<%= f.check_box :globaly %>
+		<%= f.label :Глобальный %>
   <div class="actions">
     <%= f.submit %>
   </div>

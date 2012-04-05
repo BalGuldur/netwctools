@@ -1,4 +1,6 @@
 class DomainsController < ApplicationController
+	layout 'vlansupmenu'
+
   # GET /domains
   # GET /domains.json
   def index
@@ -10,16 +12,9 @@ class DomainsController < ApplicationController
     end
   end
 
-  # GET /domains/1
-  # GET /domains/1.json
-  def show
-    @domain = Domain.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @domain }
-    end
-  end
+	def rezervrangevlan 
+		@domain=Domain.first
+	end
 
   # GET /domains/new
   # GET /domains/new.json
@@ -70,7 +65,7 @@ class DomainsController < ApplicationController
 
     respond_to do |format|
       if @domain.update_attributes(params[:domain])
-        format.html { redirect_to @domain, notice: 'Domain was successfully updated.' }
+        format.html { redirect_to vlans_path, notice: 'Domain was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
