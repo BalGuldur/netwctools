@@ -13,6 +13,7 @@
 <%= link_to "Модели свитчей", "/swmodels" %>
 <%= link_to "Коммутаторы", "/switches" %>
 <%= link_to "Вланы", "/vlans" %></nav>
+
 <%# yield %>
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 
