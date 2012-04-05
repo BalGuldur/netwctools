@@ -16,6 +16,18 @@ class DomainsController < ApplicationController
 		@domain=Domain.first
 	end
 
+	def genfromrange
+		@range=Rangevlan.new
+		@range.range=params[:range]
+		@range.domain_id=params[:id]
+		if @range.isrange? and @range.notexistvlans?
+			@range.createvlansindb
+			redirect_to vlans_path
+		else
+			redirect_to :back
+		end
+  end
+
   # GET /domains/new
   # GET /domains/new.json
   def new

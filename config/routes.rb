@@ -2,6 +2,7 @@ Netwctools::Application.routes.draw do
   resources :domains do
 		member do
 			get 'rezervrangevlan'
+			post 'genfromrange'
 		end
 	end
 

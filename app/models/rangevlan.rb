@@ -1,8 +1,8 @@
 class Rangevlan
 	@range
-	@vino_id
+	@domain_id
 
-	attr_accessor :range, :vino_id
+	attr_accessor :range, :domain_id
 
 	def isrange?
 		# regexp описывает типа х, или х-х, где х от 0 до 3999
@@ -10,14 +10,14 @@ class Rangevlan
 	end
 
 	def notexistvlans?
-		simplyvlans=Vino.find(@vino_id).terminate_point.vlans
+		simplyvlans=Domain.find(@domain_id).terminate_points.collect{|tp|tp.vlans}
 		simplyvlansid=simplyvlans.collect{|vlan|vlan.vlanpvid}
 		(self.getrangeasrange.to_a & simplyvlansid).size==0
 	end
 	
 	def createvlansindb
 		self.getrangeasrange.each do |vlanpv|
-			vlan=Vlan.new(:vlanpvid => vlanpv, :vino_id => self.vino_id, :canbebd => false, :used => false)
+			vlan=Vlan.new(:vlanpvid => vlanpv, :domain_id => self.domain_id, :canbebd => false, :used => false)
 			vlan.save
 		end
 	end
