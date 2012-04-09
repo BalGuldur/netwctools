@@ -27,6 +27,7 @@ class TerminatePointsController < ApplicationController
   # GET /terminate_points/new.json
   def new
     @terminate_point = TerminatePoint.new
+		@domains=Domain.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,7 +43,9 @@ class TerminatePointsController < ApplicationController
   # POST /terminate_points
   # POST /terminate_points.json
   def create
+		@domain=Domain.find(params[:domain_id])
     @terminate_point = TerminatePoint.new(params[:terminate_point])
+		@terminate_point.domain = @domain
 
     respond_to do |format|
       if @terminate_point.save

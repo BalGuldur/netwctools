@@ -17,8 +17,12 @@
 					<td><%#= vlan.vino.vinosname %></td>
 					<td><%#= vlan.vino.terminate_point.routerip %></td>
 					<td>
-						<%= link_to "Освободить влан", "vlan/#{vlan.id}", :method => :delete %>
+						<%= link_to "Освободить влан", "vlan/#{vlan.id}" %>
 						<%= link_to "Редактировать влан", "vlan/#{vlan.id}", :method => :get %>
+					</td>
+				<% else %>
+					<td>
+						<%= link_to "Убрать влан из резерва", vlan_path(:id => vlan.id), :method => :delete %>
 					</td>
 				<% end -%>
 			</tr>

@@ -1,5 +1,6 @@
 class TerminatePoint < ActiveRecord::Base
   validates :routerip, :uniqueness => true
+	belongs_to :domain
 	
   has_many :vinos
 	has_many :vlans, :through => :vinos

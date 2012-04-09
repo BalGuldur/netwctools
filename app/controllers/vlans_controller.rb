@@ -48,8 +48,8 @@ class VlansController < ApplicationController
 	end
 
   def autocreate
-    @vinos=Vino.all
-    @bds=Vlan.find_all_by_canbebd(true)
+		@domain=Domain.find(params[:domain_id])
+    @bds=@domain.vlans.find_all_by_canbebd(true)
   end
 
   def autocreate2

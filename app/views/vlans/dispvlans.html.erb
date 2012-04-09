@@ -1,10 +1,26 @@
+<% choosestyle="background: lightblue" %>
 <nav>
 <% Domain.all.each do |domain| %>
-	<%= link_to domain.name, dispvlans_path(:domains => domain.id, used:@used) %>
+	<% if domain.id==@domain.id %>
+		<% domainstyle=choosestyle %>
+	<% else %>
+		<% domainstyle="" %>
+	<% end -%>
+	<%= link_to domain.name, dispvlans_vlans_path(:domains => domain.id, used:@used), :style => domainstyle %>
 <% end -%>
 <br />
-<%= link_to 'Занятые', dispvlans_path(:showbds => {}.merge(@showbds), used:true, :domains => @domain) %>
-<%= link_to 'Свободные', dispvlans_path(:showbds => {}.merge(@showbds), used:false, :domains => @domain) %>
+<% linkfreestyle=Hash.new %>
+<%# linkfreestyle[:free]="" %>
+<%# linkfreestyle[:used]=choosestyle %>
+<% if @used==true %>
+	<% linkfreestyle[:free]="" %>
+	<% linkfreestyle[:used]=choosestyle %>
+<% else %>
+	<% linkfreestyle[:free]=choosestyle %>
+	<% linkfreestyle[:used]="" %>
+<% end %>
+<%= link_to 'Занятые Вланы', dispvlans_vlans_path(:showbds => {}.merge(@showbds), used:true, :domains => @domain), :style=>linkfreestyle[:used] %>
+<%= link_to 'Свободные Вланы', dispvlans_vlans_path(:showbds => {}.merge(@showbds), used:false, :domains => @domain), :style=>linkfreestyle[:free] %>
 </nav>
 <%#= @domain %>
 <%#= @vlans %>

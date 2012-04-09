@@ -6,27 +6,43 @@ Netwctools::Application.routes.draw do
 		end
 	end
 
+	resources :vlans, :only => [:index, :destroy, :edit] do
+		collection do
+			get 'dispvlans'
+			get 'allvlans'
+			get 'rangecreate'
+			get 'autocreate'
+			get 'dispvlans'
+			get 'autocreate'
+			post 'autocreate2'
+		end
+		member do
+		end
+	end
+			
+
   resources :myusers
 
-	get "dispvlans" => 'vlans#dispvlans'
+#	get "dispvlans" => 'vlans#dispvlans'
   post "tpvlans/:id" => 'terminate_points#tpvlans'
   post "vinovlans/:id" => 'vinos#vinovlans'
-  get "showbds/:id" => 'vlans#showbds'
-  get "vlans" => 'vlans#index'
-  get "allvlans" => 'vlans#allvlans'
-  get "allusedvlans" => 'vlans#allusedvlans'
-  get "allnotusedvlans" => 'vlans#allnotusedvlans'
-  get "vlans/autocreate"
-  post "vlans/autocreate2"
-  get "vlans/manualcreate"
-	get "vlans/rangecreate"
-	post "vlans/genfromrange"
-	get "vlanbdon/:id" => 'vlans#vlanbdon'
-	get "vlanbdoff/:id" => 'vlans#vlanbdoff'
-	get "changebd/:id" => 'vlans#changebd'
-	post "changebdn" => 'vlans#changebdn'
-  delete "vlan/:id" => 'vlans#destroy'
-  get "vlan/:id" => 'vlans#edit'
+#  get "showbds/:id" => 'vlans#showbds'
+#  get "vlans" => 'vlans#index'
+	#  
+#  get "allvlans" => 'vlans#allvlans'
+#  get "allusedvlans" => 'vlans#allusedvlans'
+#  get "allnotusedvlans" => 'vlans#allnotusedvlans'
+#  get "vlans/autocreate"
+#  post "vlans/autocreate2"
+#  get "vlans/manualcreate"
+#	get "vlans/rangecreate"
+#	post "vlans/genfromrange"
+#	get "vlanbdon/:id" => 'vlans#vlanbdon'
+#	get "vlanbdoff/:id" => 'vlans#vlanbdoff'
+#	get "changebd/:id" => 'vlans#changebd'
+#	post "changebdn" => 'vlans#changebdn'
+#  delete "vlan/:id" => 'vlans#destroy'
+#  get "vlan/:id" => 'vlans#edit'
 
   resources :vinos, :except => :show
 

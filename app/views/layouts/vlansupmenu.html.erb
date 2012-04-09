@@ -1,11 +1,11 @@
 <% content_for :content do %>
   <nav>
     <%= link_to "Вланы", vlans_path %>
-    <%= link_to "Все вланы", allvlans_path %>
+    <%#= link_to "Все вланы", allvlans_vlans_path %>
     <%= link_to "Точки терминирования", terminate_points_path %>
     <%= link_to "Выносы", vinos_path %>
-    <%= link_to "Резерв. диапозона вланов", vlans_rangecreate_path %>
-    <%= link_to "Выдать влан", vlans_autocreate_path %>
+    <%#= link_to "Резерв. диапозона вланов", rangecreate_vlans_path %>
+    <%#= link_to "Выдать влан", autocreate_vlans_path %>
   </nav>
 	<h1>Вланы ДДС</h1>
   <%= yield %>

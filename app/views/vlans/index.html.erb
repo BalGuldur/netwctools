@@ -1,12 +1,17 @@
 <%= link_to 'Создать нового пользователя', new_myuser_path %><br />
 <% @myusers.each do |myuser| %>
-	<h3><%= myuser.name %>    <%= link_to "Удалить пользователя", myuser_path(myuser), :method => :delete %>    <%= link_to "Добавить домен", new_domain_path(:myuser_id => myuser.id) %></h3>
+	<h3>
+		<%= myuser.name %>    
+		<%= link_to "Удалить пользователя", myuser_path(myuser), :method => :delete %>    
+		<%= link_to "Добавить домен", new_domain_path(:myuser_id => myuser.id) %>
+	</h3>
 	<% myuser.domains.each do |domain| %>
-		<h3 style='display:inline'><%= link_to domain.name, dispvlans_path(:domains => domain.id)%></h3>
+		<h3 style='display:inline'><%= link_to domain.name, dispvlans_vlans_path(:domains => domain.id)%></h3>
 		<%= "Домен глобальный" if domain.globaly %>
-		<%= link_to :Редактировать, edit_domain_path(domain) %>
-		<%= link_to "Резерв диапозон. вланов", rezervrangevlan_domain_path(domain) %>
+		<%= link_to "Выдать новый Влан (авт.)", autocreate_vlans_path(:domain_id => domain.id) %>
+		<%= link_to "Добавить свободных вланов", rezervrangevlan_domain_path(domain) %>
 		<%= link_to "Удалить домен", domain_path(domain), :method => :delete %>
+		<%= link_to :Редактировать, edit_domain_path(domain) %>
 		<br />
 		<%= domain.descr %>
 	<% end if myuser.domains!=nil -%>

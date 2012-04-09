@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+	<div class="field">
+		<%= label_tag 'Домен' %>
+		<%= select_tag :domain_id, options_from_collection_for_select(@domains, :id, :name) %><br />
+	</div>
   <div class="field">
     <%= f.label 'IP адрес роутер' %><br />
     <%= f.text_field :routerip %>
