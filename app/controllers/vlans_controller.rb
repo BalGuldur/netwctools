@@ -6,6 +6,14 @@ class VlansController < ApplicationController
 		@domains=Domain.all
 	end
 
+	def createbd
+		@vlan=Vlan.find(params[:id])
+		@vlan.used=true
+		@vlan.canbebd=true
+		@vlan.save
+		redirect_to :back
+	end
+
 	def dispvlans
 		#@user=params.has_key?(:user) ? params[:user] : nil
 		@domain=params.has_key?(:domains) ? Domain.find(params[:domains]) : nil
@@ -16,9 +24,10 @@ class VlansController < ApplicationController
 		
 		@vlans=Array.new
 		if @domain!=nil and @used==true
-			@domain.terminate_points.each{|tp|
-				tp.vlans.each{|vlan|@vlans.push(vlan)}
-			}
+			#@domain.terminate_points.each{|tp|
+			#	tp.vlans.each{|vlan|@vlans.push(vlan)}
+			#}
+			@vlans=@domain.vlans
 		elsif @domain!=nil
 			@vlans=@domain.vlans
 		else
@@ -53,9 +62,10 @@ class VlansController < ApplicationController
   end
 
   def autocreate2
-    @vino=Vino.find(params[:vino_id])
+    #@vino=Vino.find(params[:vino_id])
+		@domain=Domain.find(params[:domain_id])
     @bd=Vlan.find(params[:bd_id]) if params[:bd_id] != ""
-    @freevlan=@vino.freevlan
+    @freevlan=@domain.freevlan
     @freevlan.used=true
     if params[:bd_id] != ""
       @freevlan.bridgedomain=@bd

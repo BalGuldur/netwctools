@@ -11,12 +11,12 @@ Netwctools::Application.routes.draw do
 			get 'dispvlans'
 			get 'allvlans'
 			get 'rangecreate'
-			get 'autocreate'
 			get 'dispvlans'
 			get 'autocreate'
 			post 'autocreate2'
 		end
 		member do
+			get 'createbd'
 		end
 	end
 			

@@ -6,4 +6,8 @@ class Vlan < ActiveRecord::Base
 	has_one :terminate_point, :through => :vino 
 	belongs_to :domain
 
+	def getvino
+		self.bridgedomain.vino
+	end
+
 end

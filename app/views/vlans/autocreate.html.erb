@@ -1,5 +1,5 @@
 <h1>Введите информацию для автоматического выделения влана</h1>
-<%= form_tag 'autocreate2', :method => :post do %>
+<%= form_tag autocreate2_vlans_path(:domain_id => @domain.id), :method => :post do %>
   <%= label_tag :bd, "Бридж домайн" %><br />
   <%= select_tag :bd_id, options_from_collection_for_select(@bds, :id, :vlanpvid), :include_blank => true %><br />
   <%= submit_tag "Зарезервировать влан автоматически" %><br />

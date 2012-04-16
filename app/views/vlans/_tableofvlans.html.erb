@@ -23,6 +23,7 @@
 				<% else %>
 					<td>
 						<%= link_to "Убрать влан из резерва", vlan_path(:id => vlan.id), :method => :delete %>
+						<%= link_to "Выделить под bd", createbd_vlan_path(vlan) %>
 					</td>
 				<% end -%>
 			</tr>

@@ -3,20 +3,21 @@
 		<%= bd.vlanpvid %>
 	</h3>
 	Вынос: 
-	<%= bd.vino.vinosname %>
+	<%#= bd.vino.vinosname if bd.vino!=nil %>
+	<%= bd.vino!=nil ? bd.vino.vinosname : "_Присвоить_" %>
 	Точка терминирования: 
-	<%= bd.terminate_point.routerip %>
+	<%=  bd.terminate_point!=nil ? bd.terminate_point.routerip : "_Присвоить_" %>
 	<% if @showbds.has_key?(bd.vlanpvid.to_s) %>
 		<% if @showbds[bd.vlanpvid.to_s]=='true' %>
 			<%= 'true' %>
-			<%= link_to '-', dispvlans_path(:showbds => {bd.vlanpvid.to_s => false}.merge(@showbds){|key,oldval,newval|oldval}, used:@used, :domains => @domain) %>
+			<%= link_to '-', dispvlans_vlans_path(:showbds => {bd.vlanpvid.to_s => false}.merge(@showbds){|key,oldval,newval|oldval}, used:@used, :domains => @domain) %>
 		<% else %>
 			<%= 'false' %>
-			<%= link_to '+', dispvlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds){|key,oldval,newval|oldval}, used:@used, :domains => @domain) %>
+			<%= link_to '+', dispvlans_vlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds){|key,oldval,newval|oldval}, used:@used, :domains => @domain) %>
 		<% end -%>
 	<% else %>
 		<%='net voobshe' %>
-		<%= link_to '+', dispvlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds), used:@used, :domains => @domain) %>
+		<%= link_to '+', dispvlans_vlans_path(:showbds => {bd.vlanpvid.to_s => true}.merge(@showbds), used:@used, :domains => @domain) %>
 	<% end -%>
 			
 	<% @showvlans=bd.subvlans %>
