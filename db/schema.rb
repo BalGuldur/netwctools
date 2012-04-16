@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405075343) do
+ActiveRecord::Schema.define(:version => 20120416094508) do
 
   create_table "domains", :force => true do |t|
     t.string   "name"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(:version => 20120405075343) do
     t.boolean  "globaly"
   end
 
-  create_table "domains_terminate_points", :force => true do |t|
+  create_table "domains_myusers", :force => true do |t|
+    t.integer  "myuser_id"
     t.integer  "domain_id"
-    t.integer  "terminate_point_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120405075343) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "descr"
+    t.integer  "domain_id"
   end
 
   create_table "vinos", :force => true do |t|
