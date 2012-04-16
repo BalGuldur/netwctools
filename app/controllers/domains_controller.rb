@@ -86,10 +86,14 @@ class DomainsController < ApplicationController
   def destroy
     @domain = Domain.find(params[:id])
     @domain.destroy
-
     respond_to do |format|
-      format.html { redirect_to vlans_url }
-      format.json { head :ok }
+			if @domain.terminate_points.size != 0 
+				format.html { redirect_to vlans_url }
+				format.json { head :ok }
+			else
+				format.html { redirect_to :back, notice: "Can't delete, before delete terminate points"}
+				format.json { render json: @domain.errors, status: :unprocessable_entity }
+			end
     end
   end
 end
