@@ -38,6 +38,7 @@ class TerminatePointsController < ApplicationController
   # GET /terminate_points/1/edit
   def edit
     @terminate_point = TerminatePoint.find(params[:id])
+		@domains=Domain.all
   end
 
   # POST /terminate_points
@@ -65,7 +66,7 @@ class TerminatePointsController < ApplicationController
 
     respond_to do |format|
       if @terminate_point.update_attributes(params[:terminate_point])
-        format.html { redirect_to :back, notice: 'Terminate point was successfully updated.' }
+        format.html { redirect_to terminate_points_path, notice: 'Terminate point was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

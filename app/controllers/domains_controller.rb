@@ -51,7 +51,7 @@ class DomainsController < ApplicationController
   def create
 		@myuser=Myuser.find(params[:myuser_id])
     @domain = Domain.new(params[:domain])
-		@domain.myuser=@myuser
+		@domain.myusers<<@myuser
 
     respond_to do |format|
       if @domain.save

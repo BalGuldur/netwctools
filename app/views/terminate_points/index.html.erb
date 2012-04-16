@@ -17,7 +17,7 @@
     <td><%= terminate_point.routermac %></td>
     <td><%= terminate_point.descr %></td>
 		<td><%= terminate_point.domain.name %></td>
-    <td><%= link_to 'Редактировать', edit_terminate_point_path(terminate_point) %></td>
+		<td><%= link_to 'Редактировать', edit_terminate_point_path(terminate_point) %></td>
     <td><%= link_to 'Удалить', terminate_point, confirm: 'Вы уверены?', method: :delete %></td>
     <td><%= link_to 'Вланы этой точки', "tpvlans/#{terminate_point.id}", method: :post %></td>
   </tr>
