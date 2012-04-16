@@ -1,5 +1,5 @@
 <h1>Зарезервировать диапозон вланов</h1>
-<%= form_tag 'genfromrange', :id => params[:id], :method => :post do %>
+<%= form_tag 'genfromrange', :id => @domain.id, :method => :post do %>
 	<%= label_tag :range, "Диапозон вланов" %>
 	<%= text_field_tag :range %><br />
 	<%= submit_tag "Зарезервировать" %><br />

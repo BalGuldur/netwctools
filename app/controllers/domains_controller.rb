@@ -13,7 +13,7 @@ class DomainsController < ApplicationController
   end
 
 	def rezervrangevlan 
-		@domain=Domain.first
+		@domain=Domain.find(params[:id])
 	end
 
 	def genfromrange

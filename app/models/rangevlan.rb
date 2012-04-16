@@ -10,7 +10,7 @@ class Rangevlan
 	end
 
 	def notexistvlans?
-		simplyvlans=Domain.find(@domain_id).terminate_points.collect{|tp|tp.vlans}
+		simplyvlans=Domain.find(self.domain_id).vlans
 		simplyvlansid=simplyvlans.collect{|vlan|vlan.vlanpvid}
 		(self.getrangeasrange.to_a & simplyvlansid).size==0
 	end
