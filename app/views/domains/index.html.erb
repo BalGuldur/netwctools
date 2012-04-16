@@ -14,7 +14,7 @@
     <td><%= domain.name %></td>
     <td><%= domain.descr %></td>
     <td><%= link_to 'Show', domain %></td>
-    <td><%= link_to 'Edit', edit_domain_path(domain) %></td>
+		<td><%= link_to 'Edit', edit_domain_path(domain, :myuser_id => @myuser.id) %></td>
     <td><%= link_to 'Destroy', domain, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>

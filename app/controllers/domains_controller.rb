@@ -44,6 +44,7 @@ class DomainsController < ApplicationController
   def edit
     @domain = Domain.find(params[:id])
 		@myusers = Myuser.all
+		@myuser = Myuser.find(params[:myuser_id])
   end
 
   # POST /domains

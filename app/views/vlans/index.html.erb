@@ -11,7 +11,7 @@
 		<%= link_to "Выдать новый Влан (авт.)", autocreate_vlans_path(:domain_id => domain.id) %>
 		<%= link_to "Добавить свободных вланов", rezervrangevlan_domain_path(domain) %>
 		<%= link_to "Удалить домен", domain_path(domain), :method => :delete %>
-		<%= link_to :Редактировать, edit_domain_path(domain) %>
+		<%= link_to :Редактировать, edit_domain_path(domain, :myuser_id => myuser.id) %>
 		<br />
 		<%= domain.descr %>
 	<% end if myuser.domains!=nil -%>
